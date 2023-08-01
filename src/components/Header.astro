@@ -5,11 +5,11 @@ const navOptions = ["Mapzone", "Ecosistemas", "Contaminación"]
   w-full h-20 px-4 sm:px-8 z-50
   fixed left-0 
   flex items-center justify-between 
-  bg-[#0a071c]/30 backdrop-blur-md
+  backdrop-blur-md
   rounded-b-2xl
 ">
   <a href="/">
-    <img src="/logo.svg" alt="Logo de Arrecife"
+    <img src="/icons/logo.svg" alt="Logo de Arrecife"
     class="w-[50px] h-[50px]">
   </a>
 
@@ -24,7 +24,7 @@ const navOptions = ["Mapzone", "Ecosistemas", "Contaminación"]
     bg-indigo-950 rounded-xl
     flex items-center justify-center
     ">
-    <img src="/menu.svg" alt="Menu" class="h-[30px] w-[30px]">
+    <img src="/icons/menu.svg" alt="Menu" class="h-[30px] w-[30px]">
   </a>
     <nav class="hidden sm:block">
         <ul class="flex gap-4">
@@ -32,7 +32,7 @@ const navOptions = ["Mapzone", "Ecosistemas", "Contaminación"]
                 navOptions.map((option) =>
                     <li>
                         <a href=`/${option.toLowerCase}`
-                          class="border-[3px] border-cold-400 py-2 px-4 rounded-3xl hover:rounded-2xl hover:bg-cold-700/80 hover:text-hot-800 ease-out duration-200 transition-all font-splineSans-bold font-bold"
+                          class="border-[3px] border-cold-400 py-2 px-4 rounded-3xl hover:rounded-2xl hover:bg-cold-700/80  ease-out duration-200 transition-all font-splineSans-bold font-bold"
                         >{option}</a>                    
                     </li>
                 )

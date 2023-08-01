@@ -1,0 +1,25 @@
+<svg class="resources-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><style>
+svg,
+svg line,
+svg polyline,
+svg polygon,
+svg path,
+svg circle,
+svg clipPath,
+svg rect {
+    filter: drop-shadow(0px 1px 2px rgb(46, 19, 62, 0.6));
+}
+.rsc-cls-1,.rsc-cls-11,.rsc-cls-2,.rsc-cls-7{fill:none;}.rsc-cls-1,.rsc-cls-2,.rsc-cls-7{stroke:#fff;}.rsc-cls-1,.rsc-cls-10,.rsc-cls-11,.rsc-cls-2,.rsc-cls-3,.rsc-cls-6,.rsc-cls-7{stroke-linecap:round;stroke-linejoin:round;}.rsc-cls-1{stroke-width:2px;}.rsc-cls-2{stroke-width:2.5px;}.rsc-cls-3{fill:#e29000;stroke:#e29000;}.rsc-cls-3,.rsc-cls-6{stroke-width:1.5px;}.rsc-cls-4{fill:#97c04f;stroke:#97c04f;}.rsc-cls-4,.rsc-cls-5{stroke-miterlimit:10;}.rsc-cls-5{fill:#606060;stroke:#606060;}.rsc-cls-6{fill:#15acff;stroke:#15acff;}.rsc-cls-7{stroke-width:2.6px;}.rsc-cls-8{fill:#8e8e8e;}.rsc-cls-9{fill:#eeffa4;}.rsc-cls-10{fill:#77d0f7;stroke:#77d0f7;stroke-width:0.25px;}.rsc-cls-11{stroke:#daff8a;}</style></defs>
+                            <line class="rsc-cls-1" x1="57.22" y1="68.47" x2="63.65" y2="65.89"/>
+                            <polyline class="rsc-cls-2" points="71.24 43.01 49.36 35.29 28.76 43.01"/>
+                            <path class="rsc-cls-3" d="M60.17,51l5.66-10.8s0-.09,0-.08l-3.4.83a0,0,0,0,1-.06-.06l1.94-7.41a0,0,0,0,0-.09,0L58.66,43.89s0,.09.05.08l3.07-.75a0,0,0,0,1,.06.06l-1.76,7.65C60.07,51,60.15,51,60.17,51Z"/>
+                            <path class="rsc-cls-4" d="M44.33,34.06a5,5,0,0,1,4.71,2,5.28,5.28,0,0,1,.66,4.16c.39-.83.29-2.29,1.31-3.63A7.74,7.74,0,0,1,58.59,34c-.32,1.19-3.42,9.2-9.16,8.51S44.22,36.41,44.33,34.06Z"/>
+                            <circle class="rsc-cls-5" cx="37.79" cy="36.88" r="3.67"/>
+                            <path class="rsc-cls-5" d="M40.43,39.87h3.34a5.81,5.81,0,0,1,5.81,5.81V50.5a1.7,1.7,0,0,1-1.7,1.7H36.32a1.7,1.7,0,0,1-1.7-1.7V45.69A5.81,5.81,0,0,1,40.43,39.87Z" transform="translate(-15.62 22.36) rotate(-25.25)"/>
+                            <path class="rsc-cls-6" d="M54.94,52.75a4.2,4.2,0,0,1-7.34-4c1-1.87,8.38-6,8.38-6S56,50.88,54.94,52.75Z"/>
+                            <polygon class="rsc-cls-7" points="74.24 46.01 74.61 67.02 52.36 75.61 52.36 53.73 74.24 46.01"/>
+                            <polygon class="rsc-cls-7" points="46.36 75.61 46.36 53.73 25.76 46.01 25.76 67.16 46.36 75.61"/>
+                            <path class="rsc-cls-8" d="M42.27,41.66a3.41,3.41,0,0,1,1.8-.66,3.16,3.16,0,0,1,1,.06,4.83,4.83,0,0,1,1,.4,3.67,3.67,0,0,1,1.25,1.34,4,4,0,0,1,.53,1.81v.06s0,.06-.06.06h0c-.42-.33-.82-.68-1.22-1a9.28,9.28,0,0,0-1.24-.95,4.73,4.73,0,0,0-1.43-.58l-1.55-.35a.09.09,0,0,1-.05-.08l0,0Z"/>
+                            <path class="rsc-cls-9" d="M51,36.93a5.49,5.49,0,0,1,1.45-1.56,6.7,6.7,0,0,1,.78-.53l.83-.42a8.26,8.26,0,0,1,1.8-.5,6,6,0,0,1,2.12,0h0a.08.08,0,0,1,.06.08l0,0a29.49,29.49,0,0,1-3.41,1.73A30.91,30.91,0,0,1,51,37.07a.07.07,0,0,1-.08,0A.11.11,0,0,1,51,37Z"/>
+                            <path class="rsc-cls-10" d="M50,49l-1,1c-.7.61-1.11.17-1-1a1.16,1.16,0,0,1,1-1C50.15,47.73,50.68,48.15,50,49Z"/><line class="rsc-cls-11" x1="61.49" y1="39" x2="63.25" y2="35.41"/>
+                        </svg>

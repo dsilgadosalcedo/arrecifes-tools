@@ -1,0 +1,12 @@
+<svg class="ecosystems-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><defs><style>
+svg,
+svg line,
+svg polyline,
+svg polygon,
+svg path,
+svg circle,
+svg clipPath,
+svg rect {
+    filter: drop-shadow(0px 1px 2px rgb(46, 19, 62, 0.6));
+}
+.eco-cls-1{fill:none;}.eco-cls-2{fill:#acd7ea;}.eco-cls-3{clip-path:url(#eco-clip-path);}.eco-cls-4{fill:#b0d871;}.eco-cls-5{fill:#fff;}</style><clipPath id="eco-clip-path"><circle class="eco-cls-1" cx="49.81" cy="50" r="29.98"/></clipPath></defs><circle class="eco-cls-2" cx="49.81" cy="50" r="29.98"/><g class="eco-cls-3"><rect class="eco-cls-4" x="49.81" y="48.96" width="23.27" height="14.62" rx="5.29"/><path class="eco-cls-4" d="M74.53,33A30.19,30.19,0,0,0,62.87,22.78a7.75,7.75,0,0,0-1.58,4.7,7.68,7.68,0,0,0,1.23,4.18h-.18c-3.55,0-6.42,2.27-6.42,5.07s2.87,5.08,6.42,5.08,6.41-2.27,6.41-5.08a4.1,4.1,0,0,0-.29-1.51l.59,0A7.73,7.73,0,0,0,74.53,33Z"/><path class="eco-cls-4" d="M76.9,57.31H68.25a7.31,7.31,0,0,0,0,14.62h2.41A29.93,29.93,0,0,0,79,57.61,7.47,7.47,0,0,0,76.9,57.31Z"/><path class="eco-cls-4" d="M19.72,47.35a9.63,9.63,0,0,0,1.43.11H31.86a9,9,0,0,0,9-9h0a8.94,8.94,0,0,0-1-4.09,10.5,10.5,0,0,0,5.76-9.36h0a10.28,10.28,0,0,0-1.17-4.79A30,30,0,0,0,19.72,47.35Z"/><path class="eco-cls-4" d="M29.58,54H21.9a11.16,11.16,0,0,0-2,.19A30,30,0,0,0,32.14,74.67a10.48,10.48,0,0,0,7.92-10.16h0A10.48,10.48,0,0,0,29.58,54Z"/></g><rect class="eco-cls-5" x="15.8" y="30.76" width="23.87" height="8.95" rx="3.24"/><rect class="eco-cls-5" x="27.73" y="34.93" width="16.71" height="8.95" rx="3.24"/><rect class="eco-cls-5" x="42.35" y="22.4" width="16.71" height="8.95" rx="3.24"/><rect class="eco-cls-5" x="69.5" y="53.73" width="16.71" height="8.95" rx="3.24"/><rect class="eco-cls-5" x="59.05" y="67.75" width="16.71" height="8.95" rx="3.24"/></svg>                        
