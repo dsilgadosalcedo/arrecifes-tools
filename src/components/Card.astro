@@ -1,0 +1,15 @@
+---
+const {colora, colorb} = Astro.props
+---
+<div class=`
+bg-gradient-to-bl from-${colora} to-${colorb}
+rounded-[48px]
+w-64 sm:w-full h-[500px] sm:h-96 p-6
+flex flex-col justify-between items-center
+`>
+  <img src="/logo.svg" alt="Image 1" class="w-40">
+  <h3 class="text-3xl font-splineSans-bold">La Mapzone</h3>
+  <div class="p-4 rounded-3xl border-2 flex-grow self-center">
+    <p>Explora el planeta en mapas</p>
+  </div>
+</div>

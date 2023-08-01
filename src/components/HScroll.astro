@@ -1,0 +1,21 @@
+---
+import Card from "./Card.astro";
+
+const sectionTitle = "Explore"
+const cards = [{
+    title: "Mapzone",
+    description: "Explora el mundo en mapas",
+    url: "/mapzone",
+    image: "/mapzone.svg"
+}]              
+let a = "blue-900" 
+let b = "blue-800"
+---
+<div class="grid gap-4 overflow-x-scroll sm:overflow-x-auto sm:grid-cols-3">
+  <Card colora="[#42cc80]" colorb="[#105136]" />
+  <Card colora="cold-600" colorb="cold-800" />
+  <Card colora={a} colorb={b} />
+  <Card colora="[#42cc80]" colorb="[#105136]" />
+  <Card colora="[#42cc80]" colorb="[#105136]" />
+  <Card colora="[#42cc80]" colorb="[#105136]" />
+</div>
