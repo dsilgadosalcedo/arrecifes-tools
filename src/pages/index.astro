@@ -7,13 +7,7 @@ import {getApodData} from "../scripts/PictureOfTheDay"
 
 const pageTitle = "Arrecife"
 
-let apodData;
-
-getApodData().then(function(data) {
-  apodData = data;
-}).catch(function(error) {
-  console.log(error);
-});
+let apodData = await getApodData()
 
 
 let picture = {
@@ -27,6 +21,7 @@ let picture = {
 }
 ---
 <BaseLayout pageTitle={pageTitle}>
+	<span>{apodData}</span>
 	<h1 class="
       text-4xl sm:text-7xl text-center 
       font-splineSans-bold font-bold
@@ -46,6 +41,7 @@ let picture = {
 				rounded-[38px] shadow-lg shadow-indigo-950
 			">
 			<a class="text-end text-lg right-8 mt-4">{apodData.title}</a>
+			<span>{apodData.rateLimitRemaining}</span>
 		</Section>
 	</div>
 </BaseLayout>
