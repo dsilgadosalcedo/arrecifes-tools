@@ -7,13 +7,13 @@ import {getApodData} from "../scripts/PictureOfTheDay"
 
 const pageTitle = "Arrecife"
 
-// let apodData;
+let apodData;
 
-// getApodData().then(function(data) {
-//   apodData = data;
-// }).catch(function(error) {
-//   console.log(error);
-// });
+getApodData().then(function(data) {
+  apodData = data;
+}).catch(function(error) {
+  console.log(error);
+});
 
 
 let picture = {
@@ -40,12 +40,12 @@ let picture = {
 			<HScroll />
 		</Section>
 		<NewFeature />
-		<Section sectionTitle="La imagen del día">
-			<img src={picture.url} alt="Tú eres la imagen" class="
+		<Section sectionTitle="La foto del día">
+			<img src={apodData.url} alt="Mírate! Tú eres la foto del día" class="
 				w-full sm:h-screen object-cover
 				rounded-[38px] shadow-lg shadow-indigo-950
 			">
-			<a class="text-end text-lg right-8 mt-4">{picture.title}</a>
+			<a class="text-end text-lg right-8 mt-4">{apodData.title}</a>
 		</Section>
 	</div>
 </BaseLayout>
