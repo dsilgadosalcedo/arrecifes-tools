@@ -17,16 +17,11 @@ const {pageTitle} = Astro.props
   bg-cold-800
   m-0 p-0
 ">
-  <div class="
-    min-h-screen
-    flex flex-col
-  ">
-    <Header />
-    <main class="flex-grow">
-      <slot />
-    </main>
-    <Footer pageTitle={pageTitle} />
-  </div>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer pageTitle={pageTitle} />
 </body>
 </html>
 
@@ -38,12 +33,7 @@ const {pageTitle} = Astro.props
     --smaller: 1.6rem;
   }
   * {
-    border: 0;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
   }
 
   @font—face {

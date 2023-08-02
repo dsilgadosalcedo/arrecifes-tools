@@ -3,8 +3,18 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import Section from "../components/Section.astro";
 import HScroll from "../components/HScroll.astro";
 import NewFeature from "../components/NewFeature.astro"
+import {getApodData} from "../scripts/PictureOfTheDay"	
 
 const pageTitle = "Arrecife"
+
+// let apodData;
+
+// getApodData().then(function(data) {
+//   apodData = data;
+// }).catch(function(error) {
+//   console.log(error);
+// });
+
 
 let picture = {
 	"date": "2023-07-31",
@@ -26,7 +36,7 @@ let picture = {
         un clic <span class="text-purple-300">(o varios)</span>
   </h1>
 	<div>
-		<Section sectionTitle="Explora nuestras categorías">
+		<Section sectionTitle="Explora nuestras categorías" mx="ml-4">
 			<HScroll />
 		</Section>
 		<NewFeature />
@@ -35,7 +45,7 @@ let picture = {
 				w-full sm:h-screen object-cover
 				rounded-[38px] shadow-lg shadow-indigo-950
 			">
-			<a class="text-end text-lg relative right-8 mt-4">{picture.title}</a>
+			<a class="text-end text-lg right-8 mt-4">{picture.title}</a>
 		</Section>
 	</div>
 </BaseLayout>
