@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import { getApodData } from "../../../scripts/PictureOfTheDay.js"	
+
+const pageTitle = "Foto del día"
+const apodData = await getApodData()
+---
+<BaseLayout pageTitle={pageTitle}>
+  <section class="sm:flex w-full p-8 gap-8">
+    <div class="sm:w-1/2">
+      <h1 class="text-3xl font-splineSans-bold font-bold">{apodData.title}</ml-4">{apodData.title}</h1>
+      <div class="flex flex-col">
+        <a href="" class="inline-block text-right">Ver en HD</a>
+        <img src={apodData.url} alt="Tú eres la foto del día"
+          class="w-64 h-64 rounded-3xl object-cover"
+        >
+      </div>
+    </div>
+    <div class="sm:w-1/2 flex flex-col">
+      <a href="">Descargar</a>
+      <article>
+        <p>Descripción</p>
+        <span>Fecha</span>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
