@@ -1,11 +1,11 @@
 const cards = [
   {
-    title: "La Mapzone",
-    description: "Explora el planeta en mapas.",
+    title: "Space",
+    description: "Encuentra las herramientas celestiales.",
     url: "#",
     image: "/icons/resources-icon.svg",
     firstColor:"from-cold-400",
-    secondColor:"to-cold-600",
+    secondColor:"to-gray-800",
   },
   {
     title: "Tratamientos",
@@ -38,6 +38,14 @@ const cards = [
     image: "/icons/waste-icon.svg",
     firstColor:"from-[#42cc80]",
     secondColor:"to-[#105136]",
+  },
+  {
+    title: "La Mapzone",
+    description: "Explora el planeta en mapas.",
+    url: "#",
+    image: "/icons/resources-icon.svg",
+    firstColor:"from-cold-400",
+    secondColor:"to-cold-600",
   },
 ]   
 
