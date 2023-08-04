@@ -1,7 +1,7 @@
 const cards = [
   {
     title: "Space",
-    description: "Encuentra las herramientas celestiales.",
+    description: "Nuestras herramientas celestiales.",
     url: "#",
     image: "/icons/resources-icon.svg",
     firstColor:"from-cold-400",
