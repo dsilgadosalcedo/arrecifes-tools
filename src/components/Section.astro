@@ -1,7 +1,9 @@
 ---
-const {sectionTitle, mx = "mx-4"} = Astro.props
+const {sectionTitle, mx} = Astro.props
 ---
-<section class=`flex flex-col my-16 pr-0 sm:px-8 ${mx}`>
-  <h2 class="text-3xl font-splineSans-bold font-bold mb-14 ml-4">{sectionTitle}</h2>
+<section class=`flex flex-col my-16 pr-0 mx-4 sm:mx-8 ${mx}`>
+  {
+    sectionTitle && <h2 class="text-3xl font-splineSans-bold font-bold mb-14 ml-4">{sectionTitle}</h2>
+  }
   <slot />
 </section>

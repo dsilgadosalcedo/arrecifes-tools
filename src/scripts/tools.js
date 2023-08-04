@@ -31,7 +31,6 @@ const cards = [
     firstColor:"from-white",
     secondColor:"to-cold-400",
   },
-  
   {
     title: "Residuos",
     description: "Manejo integral de residuos aquí.",
