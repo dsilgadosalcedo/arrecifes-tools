@@ -23,20 +23,38 @@ const apodData = await getApodData()
 		</Section>
 		<NewFeature />
 		<Section sectionTitle="La foto del día">
-			<a href={apodData.hdurl} target="_blank" class="relative">
-				<img id="pictureDay" src={apodData.url} alt="Mírate! Tú eres la foto del día" class="
-					w-full sm:h-screen object-cover
-					rounded-[38px] shadow-lg shadow-indigo-950
-				">
-				<div lang="en" id="description" 
-				  class="text-gray-300 text-sm ml-6 absolute bottom-6 hidden sm:inline-block p-2 rounded-lg bg-cold-500/50 overflow-hidden w-80 truncate">
-					  {apodData.explanation}
+			<div>
+				<a href={apodData.hdurl} target="_blank" class="relative">
+					<img src={apodData.url} alt="Mírate! Tú eres la foto del día" class="
+						w-full sm:h-screen object-cover
+						rounded-[38px] shadow-lg shadow-indigo-950
+					">
+					<div class="
+						w-80 
+						hidden sm:block z-30 
+						overflow-hidden truncate
+						relative bottom-14"
+						>
+							<a
+								lang="en" 
+								href="./space/picture-of-the-day/" 
+								class="inline-block text-gray-300 text-sm ml-6 p-2 rounded-lg bg-cold-500/50" 
+								>
+								{apodData.explanation}
+							</a>
+					</div>
+				</a>
+				<div class="flex justify-end mr-6">
+					<a 
+						lang="en" 
+						href="./space/picture-of-the-day/" 
+						class="text-lg underline hover:text-cold-400 hover:duration-300"
+						>
+							{apodData.title}
+					</a>
 				</div>
-			</a>
-			<a lang="en" id="title" href="./space/picture-of-the-day/" 
-			  class="text-end text-lg right-8 mt-4 pr-8 underline hover:text-cold-400 hover:duration-300">
-				  {apodData.title}
-			</a>
+			</div>
+			
 		</Section>
 	</div>
 </BaseLayout>

@@ -7,16 +7,22 @@ const pageTitle = "Foto del día"
 const apodData = await getApodData()
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <div class="fixed w-screen min-h-screen bg-cold-500/50 backdrop-blur-sm z-50 justify-center items-center p-12 overflow-y-scroll top-0 hidden">
-    <img src={apodData.url}  class="rounded-3xl" alt="Imagen del día">
+  <div id="imgBanner" class="
+  transition-opacity duration-150 ease-in opacity-0 hover:opacity-100
+  fixed w-screen h-screen bg-cold-500/50 backdrop-blur-sm z-50 justify-center items-center overflow-y-scroll top-0 hidden sm:flex sm:hidden hover:cursor-pointer
+  ">
+    <img src={apodData.url}  class="rounded-3xl" alt="Imagen  del día">
   </div>
   <section class="p-8 pb-0">
     <h1 lang="en" class="text-3xl font-splineSans-bold font-bold">{apodData.title}</h1>
     <div class="md:flex w-full my-4 gap-8">
       <div class="md:w-1/2">
         <div class="flex flex-col">
-          <img src={apodData.url} alt="Tú eres la foto del día"
-            class="w-100 h-96 rounded-3xl object-cover"
+          <img 
+            id="img" 
+            src={apodData.url} 
+            alt="Tú eres la foto del día"
+            class="w-100 h-96 rounded-3xl object-cover hover:cursor-pointer"
           >
           <div class="m-4 flex gap-2">
             <Link text="Descargar" href={apodData.url} download/>
@@ -51,4 +57,15 @@ const apodData = await getApodData()
       </div>
     </div>
   </section>
+  <script defer>
+    const img = document.querySelector("#img")
+    const imgBanner = document.querySelector("#imgBanner")
+
+    imgBanner.addEventListener("click", toggleClass)
+    img.addEventListener("click", toggleClass)
+
+    function toggleClass() {
+      imgBanner.classList.toggle('sm:hidden')
+    }
+  </script>
 </BaseLayout>

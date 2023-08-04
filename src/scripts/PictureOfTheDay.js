@@ -5,7 +5,6 @@ async function fetchApodData() {
   try {
     const response = await fetch(apiUrl);
     const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
-    console.log(response.headers)
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
