@@ -30,17 +30,18 @@ const apodData = await getApodData()
 						rounded-[38px] shadow-lg shadow-indigo-950
 					">
 					<div class="
-						w-80 
-						hidden sm:block z-30 
+						w-96
+						hidden sm:block relative z-30 
 						overflow-hidden truncate
-						relative bottom-14"
+						bottom-16 py-2 px-4
+						rounded-lg bg-cold-500/50 ml-6"
 						>
 							<a
 								lang="en" 
 								href="./space/picture-of-the-day/" 
-								class="inline-block text-gray-300 text-sm ml-6 p-2 rounded-lg bg-cold-500/50" 
+								class="text-gray-300 text-sm font-splineSans-regular" 
 								>
-								{apodData.explanation}
+								{apodData.explanation ? apodData.explanation : "Click to see more"}
 							</a>
 					</div>
 				</a>
