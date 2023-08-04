@@ -39,26 +39,4 @@ const apodData = await getApodData()
 			</a>
 		</Section>
 	</div>
-	<!-- <script>
-		const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    const currentDate = `${year}-${month}-${day}`;
-		
-		const img = document.querySelector('#pictureDay')
-		const parent = img.parentNode
-		const a = document.querySelector('#title')
-		const desc = document.querySelector('#description')
-
-    const apodData_ = {
-      "date" : currentDate,
-      "url" : img.src,
-      "hdurl" : parent.href,
-      "title" : a.innerText,
-			"explanation" : desc.innerText
-    }
-
-		localStorage.setItem('apodData', JSON.stringify(apodData_))
-	</script> -->
 </BaseLayout>

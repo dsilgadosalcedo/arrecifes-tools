@@ -24,22 +24,34 @@ function getCurrentDate() {
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, '0');
   const day = String(today.getDate()).padStart(2, '0');
+  console.log("Date:", `${year}-${month}-${day}`);
+  
   return `${year}-${month}-${day}`;
 }
 
 function getApodDataFromCache() {
-  const apodData = localStorage.getItem('apodData');
-  apodData && console.log("apodData received");
-  return apodData ? JSON.parse(apodData) : null;
+  let list = localStorage.getItem('listApodData');
+  list = list && JSON.parse(list);
+  return list && list.length < 100 ? list : null;
+}
+
+function getCurrentApodData() {
+  const list = getApodDataFromCache() ? getApodDataFromCache() : [];
+  const todayData = list.find(item => item.date === getCurrentDate());
+  console.log("todayData", todayData);
+  return todayData ? todayData : null;
 }
 
 function saveApodDataToCache(apodData) {
-  console.log("Saving APOD data to cache");
-  localStorage.setItem('apodData', JSON.stringify(apodData));
+  const list = getApodDataFromCache() ? getApodDataFromCache() : [];
+  list.push(apodData);
+  localStorage.setItem('listApodData', JSON.stringify(list));
+  console.log("Saving APOD data to cache", list);
 }
 
 export async function getApodData() {
-  const cachedApodData = getApodDataFromCache();
+  const cachedApodData = getCurrentApodData();
+  // console.log(cachedApodData, cachedApodData.date, getCurrentDate())
   if (cachedApodData && cachedApodData.date === getCurrentDate()) {
     return cachedApodData;
   } else {
