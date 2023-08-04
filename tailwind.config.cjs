@@ -16,15 +16,11 @@ module.exports = {
 					900: '#f20103',
 					800: '#ff9885'
 				},
-				gray: {
-					100: '#266c67',
-					200: '#143635'
-				},
 				white: '#93f0ff'
-				
 			},
 			fontFamily: {
 				'splineSans-bold': ['SplineSans-Bold', 'sans-serif'],
+				'splineSans-regular': ['SplineSans-Regular', 'sans-serif'],
 				'monoDisplay-normal': ['MonoDisplay-normal', 'mono']
 			}
 		},

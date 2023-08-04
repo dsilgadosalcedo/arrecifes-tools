@@ -1,27 +1,54 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro"
 import { getApodData } from "../../../scripts/PictureOfTheDay.js"	
+import Link from "../../../components/Link.astro"
 
 const pageTitle = "Foto del día"
 const apodData = await getApodData()
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <section class="sm:flex w-full p-8 gap-8">
-    <div class="sm:w-1/2">
-      <h1 class="text-3xl font-splineSans-bold font-bold">{apodData.title}</ml-4">{apodData.title}</h1>
-      <div class="flex flex-col">
-        <a href="" class="inline-block text-right">Ver en HD</a>
-        <img src={apodData.url} alt="Tú eres la foto del día"
-          class="w-64 h-64 rounded-3xl object-cover"
-        >
+  <div class="fixed w-screen min-h-screen bg-cold-500/50 backdrop-blur-sm z-50 justify-center items-center p-12 overflow-y-scroll top-0 hidden">
+    <img src={apodData.url}  class="rounded-3xl" alt="Imagen del día">
+  </div>
+  <section class="p-8 pb-0">
+    <h1 lang="en" class="text-3xl font-splineSans-bold font-bold">{apodData.title}</h1>
+    <div class="md:flex w-full my-4 gap-8">
+      <div class="md:w-1/2">
+        <div class="flex flex-col">
+          <img src={apodData.url} alt="Tú eres la foto del día"
+            class="w-100 h-96 rounded-3xl object-cover"
+          >
+          <div class="m-4 flex gap-2">
+            <Link text="Descargar" href={apodData.url} download/>
+            <Link text="Descargar HD" href={apodData.hdurl} download/>
+            <Link text="Ver en HD" href={apodData.hdurl}/>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="sm:w-1/2 flex flex-col">
-      <a href="">Descargar</a>
-      <article>
-        <p>Descripción</p>
-        <span>Fecha</span>
-      </article>
+      <div class="md:w-1/2">
+        <article class="p-4 font-splineSans-regular font-normal bg-cold-500/30 rounded-3xl">
+          <p lang="en" class=" text-white">{apodData.explanation}</p>
+          <p id="paragraphDate" class=" text-gray-300 text-sm text-end">{apodData.date}</p>
+        </article>
+        <!-- <div class="m-4 self-end">
+          <label for="date">Escoge otro día</label>
+          <input type="date" id="date" class="text-gray-300 text-sm p-2 rounded-lg font-splineSans-regular font-normal bg-cold-700 hover:bg-cold-500 transition-all duration-200">
+        </div>
+        <script defer>
+          document.addEventListener('DOMContentLoaded', function() {
+            const inputDate = document.querySelector('#date');
+            const p = document.querySelector('#paragraphDate');
+            const pDate = new Date(p.innerText);
+            inputDate.value = pDate.toISOString().split('T')[0];
+            inputDate.addEventListener('change', function() {
+              let date = inputDate.value;
+              // date = date.split('-').reverse().join('-');
+              // inputDate.value = date;
+              console.log(date);
+            });
+          });
+        </script> -->
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -28,12 +28,12 @@ const apodData = await getApodData()
 					w-full sm:h-screen object-cover
 					rounded-[38px] shadow-lg shadow-indigo-950
 				">
-				<div id="description" 
+				<div lang="en" id="description" 
 				  class="text-gray-300 text-sm ml-6 absolute bottom-6 hidden sm:inline-block p-2 rounded-lg bg-cold-500/50 overflow-hidden w-80 truncate">
 					  {apodData.explanation}
 				</div>
 			</a>
-			<a id="title" href="./space/picture-of-the-day/" 
+			<a lang="en" id="title" href="./space/picture-of-the-day/" 
 			  class="text-end text-lg right-8 mt-4 pr-8 underline hover:text-cold-400 hover:duration-300">
 				  {apodData.title}
 			</a>
