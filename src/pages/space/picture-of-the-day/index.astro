@@ -11,7 +11,7 @@ const apodData = await getApodData()
   transition-opacity duration-150 ease-in opacity-0 hover:opacity-100
   fixed w-screen h-screen bg-cold-500/50 backdrop-blur-sm z-50 justify-center items-center overflow-y-scroll top-0 hidden sm:flex sm:hidden hover:cursor-pointer
   ">
-    <img src={apodData.url}  class="rounded-3xl" alt="Imagen  del día">
+    <img src={apodData.url}  class="absolute top-0 rounded-3xl" alt="Imagen  del día">
   </div>
   <section class="p-8 pb-0">
     <h1 lang="en" class="text-3xl font-splineSans-bold font-bold">{apodData.title}</h1>

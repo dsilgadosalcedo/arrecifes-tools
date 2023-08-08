@@ -13,12 +13,16 @@
   </header>
   <div class="flex flex-col sm:flex-row sm:w-full gap-8 [&>div]:flex [&>div]:items-center [&>div]:justify-center">
     <div class="sm:w-1/2">
-      <img src="/img/reefTransparent.avif" alt="reef" class="w-72 h-72 object-cover rounded-full z-10 sm:animate-spin sm:animate-infinite sm:animate-duration-[100000ms] sm:animate-reverse">
+      <picture class="w-72 h-72 object-cover rounded-full z-10 sm:animate-spin sm:animate-infinite sm:animate-duration-[100000ms] sm:animate-reverse">
+        <source srcset="/img/reefTransparent.avif" type="image/avif">
+        <source srcset="/img/reef.png" type="image/png">
+        <img src="/img/reefTransparent.avif" alt="reef">
+      </picture>
     </div>
     <div class="sm:w-1/2">
       <div class="flex flex-col gap-4 text-center sm:text-end w-80">
         <p class="font-splineSans-bold text-2xl">Encuentra cualquier especie, avistamientos y más información super detallada</p>
-        <a href="" class="
+        <a href="/ecosystems/bb2" class="
           p-4 
           font-monoDisplay-normal font-normal text-center
           bg-cold-500/50

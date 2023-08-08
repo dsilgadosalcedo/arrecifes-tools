@@ -3,7 +3,7 @@ const {title, description, url, image, firstColor, secondColor} = Astro.props
 ---
 
 <a 
-  href="#"
+  href={url}
   class=`
     bg-gradient-to-bl ${firstColor} ${secondColor}
     rounded-[48px]

@@ -18,7 +18,7 @@ const cards = [
   {
     title: "Ecosistemas",
     description: "Tejidos vivos interconectados en equilibrio.",
-    url: "#",
+    url: "/ecosystems",
     image: "/icons/ecosystems-icon.svg",
     firstColor:"from-cold-400",
     secondColor:"to-[#42cc80]",

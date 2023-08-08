@@ -24,28 +24,23 @@ const apodData = await getApodData()
 		<NewFeature />
 		<Section sectionTitle="La foto del día">
 			<div>
-				<a href={apodData.hdurl} target="_blank" class="relative">
+				<a href={apodData.hdurl} target="_blank">
 					<img src={apodData.url} alt="Mírate! Tú eres la foto del día" class="
 						w-full sm:h-screen object-cover
 						rounded-[38px] shadow-lg shadow-indigo-950
 					">
-					<div class="
-						w-96
-						hidden sm:block relative z-30 
-						overflow-hidden truncate
-						bottom-16 py-2 px-4
-						rounded-lg bg-cold-500/50 ml-6"
+					<a
+						lang="en" 
+						href="./space/picture-of-the-day/" 
+						class=" hidden sm:inline-block w-96 truncate relative
+						bottom-16 text-gray-300 text-sm font-splineSans-regular py-2 px-4 z-50 rounded-lg bg-cold-500/50 ml-6 overflow-hidden" 
 						>
-							<a
-								lang="en" 
-								href="./space/picture-of-the-day/" 
-								class="text-gray-300 text-sm font-splineSans-regular" 
-								>
-								{apodData.explanation ? apodData.explanation : "Click to see more"}
-							</a>
-					</div>
+						<span>
+							{apodData.explanation ? apodData.explanation : "Click to see more"}
+						</span>
+					</a>
 				</a>
-				<div class="flex justify-end mr-6">
+				<div class="flex justify-end relative top-4 sm:top-0 mr-6">
 					<a 
 						lang="en" 
 						href="./space/picture-of-the-day/" 
@@ -55,7 +50,6 @@ const apodData = await getApodData()
 					</a>
 				</div>
 			</div>
-			
 		</Section>
 	</div>
 </BaseLayout>
