@@ -28,12 +28,12 @@ function getCurrentDate() {
 function getApodDataFromCache() {
   let list = localStorage.getItem('listApodData');
   list = list && JSON.parse(list);
-  return list && list.length < 100 ? list : null;
+  return list
 }
 
 function getCurrentApodData() {
   const list = getApodDataFromCache() ? getApodDataFromCache() : [];
-  const todayData = list.find(item => item.date === getCurrentDate());
+  const todayData = list && list.find(item => item.date === getCurrentDate());
   return todayData ? todayData : null;
 }
 
@@ -50,6 +50,7 @@ export async function getApodData() {
   } else {
     const newApodData = await fetchApodData();
     saveApodDataToCache(newApodData);
+    console.log(newApodData.rateLimitRemaining);
     return newApodData;
   }
 }
