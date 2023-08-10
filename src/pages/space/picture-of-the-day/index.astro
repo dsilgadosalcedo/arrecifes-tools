@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro"
-import { getApodData } from "../../../scripts/PictureOfTheDay.js"	
+import { fetchApodData } from "../../../scripts/PictureOfTheDay.js"	
 import Link from "../../../components/Link.astro"
 
 const pageTitle = "Foto del día"
-const apodData = await getApodData()
+const apodData = await fetchApodData()
 ---
 <BaseLayout pageTitle={pageTitle}>
   <div id="imgBanner" class="
@@ -13,7 +13,7 @@ const apodData = await getApodData()
   ">
     <img src={apodData.url}  class="absolute top-0 rounded-3xl" alt="Imagen  del día">
   </div>
-  <section class="p-8 pb-0">
+  <section class="p-4 pb-0 sm:p-8 sm:pb-0">
     <h1 lang="en" class="text-3xl font-splineSans-bold font-bold">{apodData.title}</h1>
     <div class="md:flex w-full my-4 gap-8">
       <div class="md:w-1/2">
@@ -24,10 +24,10 @@ const apodData = await getApodData()
             alt="Tú eres la foto del día"
             class="w-100 h-96 rounded-3xl object-cover hover:cursor-pointer"
           >
-          <div class="m-4 flex gap-2">
-            <Link text="Descargar" href={apodData.url} download/>
-            <Link text="Descargar HD" href={apodData.hdurl} download/>
-            <Link text="Ver en HD" href={apodData.hdurl}/>
+          <div class="m-4 flex flex-wrap gap-2">
+            <Link href={apodData.url} download>Descargar</Link>
+            <Link href={apodData.hdurl} download>Descargar HD</Link>
+            <Link href={apodData.hdurl}>Ver en HD</Link>
           </div>
         </div>
       </div>

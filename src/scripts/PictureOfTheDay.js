@@ -1,7 +1,7 @@
 const apiKey = "kmQOP13MoJhnRftKtbw8wEjK04O4xI6Dls8R0dc6";
 const apiUrl = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey;
 
-async function fetchApodData() {
+export async function fetchApodData() {
   try {
     const response = await fetch(apiUrl);
     const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
@@ -43,6 +43,7 @@ function saveApodDataToCache(apodData) {
   localStorage.setItem('listApodData', JSON.stringify(list));
 }
 
+/*
 export async function getApodData() {
   const cachedApodData = getCurrentApodData();
   if (cachedApodData && cachedApodData.date === getCurrentDate()) {
@@ -54,3 +55,4 @@ export async function getApodData() {
     return newApodData;
   }
 }
+*/
