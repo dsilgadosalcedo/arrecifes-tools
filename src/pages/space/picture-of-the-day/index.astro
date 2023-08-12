@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro"
-import { fetchApodData } from "../../../scripts/PictureOfTheDay.js"	
+import { fetchApodData } from "../../../scripts/fetch.js"	
 import Link from "../../../components/Link.astro"
 
 const pageTitle = "Foto del día"
@@ -69,3 +69,4 @@ const apodData = await fetchApodData()
     }
   </script>
 </BaseLayout>
+../../../scripts/fetch.js

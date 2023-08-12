@@ -17,76 +17,23 @@ const back = "rgb(147, 128, 255, 0.3)";
       </div>
       
       <div class="flex flex-col results overflow-y-scroll sm:h-[430px]">
-        <div class="flex flex-col gap-2 m-2">
-          <div class="h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden">
+        <div id="results-container" class="flex flex-col gap-2 m-2">
+          <!-- <div class="h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden">
             <div class="flex p-2 gap-4">
               <div class="w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full"></div>
               <div class="flex flex-col justify-center">
-                <em class="text-md">Morpho Catalicéis</em>
-                <p class="text-sm">Rank: <span>species</span></p>
+                <em class="text-md" id="name">Morpho Catalicéis</em>
+                <p class="text-sm">Rank: <span id="rank">species</span></p>
               </div>
             </div>
             <div class="w-56 h-20">
               <img class="object-cover w-full h-full" src="https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn" alt="">
               <div class="w-56 h-20 bg-gradient-to-r from-cold-600  to-transparent absolute top-0"></div>
             </div>
-          </div>
-
-          <div class="h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden">
-            <div class="flex p-2 gap-4">
-              <div class="w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full"></div>
-              <div class="flex flex-col justify-center">
-                <em class="text-md">Morpho Catalicéis</em>
-                <p class="text-sm">Rank: <span>species</span></p>
-              </div>
-            </div>
-            <div class="w-56 h-20">
-              <img class="object-cover w-full h-full" src="https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn" alt="">
-              <div class="w-56 h-20 bg-gradient-to-r from-cold-600  to-transparent absolute top-0"></div>
-            </div>
-          </div>
-          <div class="h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden">
-            <div class="flex p-2 gap-4">
-              <div class="w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full"></div>
-              <div class="flex flex-col justify-center">
-                <em class="text-md">Morpho Catalicéis</em>
-                <p class="text-sm">Rank: <span>species</span></p>
-              </div>
-            </div>
-            <div class="w-56 h-20">
-              <img class="object-cover w-full h-full" src="https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn" alt="">
-              <div class="w-56 h-20 bg-gradient-to-r from-cold-600  to-transparent absolute top-0"></div>
-            </div>
-          </div>
-          <div class="h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden">
-            <div class="flex p-2 gap-4">
-              <div class="w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full"></div>
-              <div class="flex flex-col justify-center">
-                <em class="text-md">Morpho Catalicéis</em>
-                <p class="text-sm">Rank: <span>species</span></p>
-              </div>
-            </div>
-            <div class="w-56 h-20">
-              <img class="object-cover w-full h-full" src="https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn" alt="">
-              <div class="w-56 h-20 bg-gradient-to-r from-cold-600  to-transparent absolute top-0"></div>
-            </div>
-          </div>
-          <div class="h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden">
-            <div class="flex p-2 gap-4">
-              <div class="w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full"></div>
-              <div class="flex flex-col justify-center">
-                <em class="text-md">Morpho Catalicéis</em>
-                <p class="text-sm">Rank: <span>species</span></p>
-              </div>
-            </div>
-            <div class="w-56 h-20">
-              <img class="object-cover w-full h-full" src="https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn" alt="">
-              <div class="w-56 h-20 bg-gradient-to-r from-cold-600  to-transparent absolute top-0"></div>
-            </div>
-          </div>
+          </div> -->
         </div>
         
-        <!-- <div class="bg-gradient-to-b from-transparent to-cold-800 h-20 relative bottom-14 rounded-b-3xl mx-2 z-40"></div> -->
+        <div class="bg-gradient-to-b from-transparent to-cold-800 h-20 relative bottom-14 rounded-b-3xl mx-2 z-40"></div>
 
         <div class="flex justify-center py-4">
           <Link href="#">Ver más resultados</Link>
@@ -94,7 +41,8 @@ const back = "rgb(147, 128, 255, 0.3)";
       </div>
       
       <style define:vars={{back}}>
-        .results::-webkit-scrollbar {
+        @media (min-width: 576px) {
+          .results::-webkit-scrollbar {
           width: 10px;
           height: 10px;
           background-color: transparent;
@@ -114,6 +62,7 @@ const back = "rgb(147, 128, 255, 0.3)";
           background-color: var(--back);
           border-radius: 6px 0 0 6px;
         }
+        }
       </style>
     </section>
     <section class="sm:w-2/5 hidden sm:flex flex-col gap-8 items-center">
@@ -125,22 +74,135 @@ const back = "rgb(147, 128, 255, 0.3)";
 </BaseLayout>
 
 <script>
+  const audioElement = new Audio('/sounds/click.mp3');
   const input = document.querySelector("#input")
-  input.addEventListener()
+  input.addEventListener("keydown", (event) => {
+    if (event.keyCode === 13) {
+      response(input.value)
+    }
+  });
 
-  async function fetchData() {
-  try {
-    const response = await fetch();
-    const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+  async function response(inputValue) {
+    const elements = createElements()
+    const stylizedElements = stylizeElements(elements)
+    const bioUrl = `https://api.gbif.org/v1/species/search?q=${inputValue}&rank=species&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c`
+    const results = await fetchGbif(bioUrl).then((data) => {
+      return data
+    })
+    const tunedResults = getInfoFromResults(results)
+    await printResults(stylizedElements, tunedResults)
+  }
+
+  function createElements() {
+    const divContainer = document.createElement("div")
+
+    const divSection1 = document.createElement("div")
+    const divS11 = document.createElement("div")
+    const divS12 = document.createElement("div")
+    const em = document.createElement("em")
+    const p = document.createElement("p")
+
+    const divSection2 = document.createElement("div")
+    const img = document.createElement("img")
+    const divGradientEffect = document.createElement("div")
+
+    return {divContainer, divSection1, divS11, divS12, em, p, divSection2, img, divGradientEffect}
+  }
+
+  function stylizeElements(elements) {
+    const styles = {
+      "divContainer" : "h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden",
+      "divSection1" : "flex p-2 gap-4",
+      "divS11" : "w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full",
+      "divS12" : "flex flex-col justify-center",
+      "em" : "text-md",
+      "p" : "text-sm",
+      "divSection2" : "w-56 h-20",
+      "img" : "object-cover w-full h-full",
+      "divGradientEffect" : "w-56 h-20 bg-gradient-to-r from-cold-600 to-transparent absolute top-0"
     }
 
-    const data = await response.json();
-    data.rateLimitRemaining = rateLimitRemaining;
-    return data;
-  } catch (error) {
-    throw error;
+    for (const key in elements) {
+      const classString = styles[key];
+      const classArray = classString.split(' ');
+      classArray.forEach(className => {
+        elements[key].classList.add(className);
+      });
+    }
+    return elements
+  }
+
+  async function fetchGbif(word) {
+    try {
+      const response = await fetch(word);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  function getInfoFromResults(results) {
+    let turnedResults = []
+    console.log(results)
+    const resultados = results.results
+    console.log(results.results)
+    resultados.map(record => {
+      const rank = record.rank.toLocaleLowerCase()
+      const species = record.species
+      const speciesKey = record.speciesKey
+      turnedResults.push({rank, species, speciesKey})
+    })
+    return turnedResults
+  }
+
+  async function printResults(elements, results) {
+  const resultsContainer = document.querySelector("#results-container");
+  resultsContainer.innerHTML = "";
+
+  for (const result of results) {
+    const divContainer = elements.divContainer.cloneNode(true);
+    const divSection1 = elements.divSection1.cloneNode(true);
+    const divSection2 = elements.divSection2.cloneNode(true);
+    const divS11 = elements.divS11.cloneNode(true);
+    const divS12 = elements.divS12.cloneNode(true);
+    const em = elements.em.cloneNode(true);
+    const p = elements.p.cloneNode(true);
+    const img = elements.img.cloneNode(true);
+    const divGradientEffect = elements.divGradientEffect.cloneNode(true);
+
+    em.innerText = result.species;
+    p.innerText = `Rank: ${result.rank}`;
+    divS12.append(em, p);
+    divSection1.append(divS11, divS12);
+
+    const imageURL = await findImage(result.speciesKey);
+    img.setAttribute("src", imageURL ? imageURL : "https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn");
+    img.setAttribute("alt", result.species);
+    divSection2.append(img, divGradientEffect);
+
+    divContainer.append(divSection1, divSection2);
+    resultsContainer.append(divContainer);
+    reproduceSound()
   }
 }
+
+  async function findImage(key) {
+    const url = `https://api.gbif.org/v1/species/${key}/media`;
+    const fetchResults = await fetchGbif(url);
+    const getURL = (list) => {
+      return list.find((item) => item.format.includes("image"))?.identifier;
+    };
+    const imageURL = getURL(fetchResults.results);
+    return imageURL;
+  }
+
+  function reproduceSound() {
+    audioElement.currentTime = 0;
+    audioElement.play();
+  }
+
 </script>

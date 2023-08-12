@@ -1,9 +1,8 @@
-const apiKey = "kmQOP13MoJhnRftKtbw8wEjK04O4xI6Dls8R0dc6";
-const apiUrl = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey;
-
+const nasaKey = "kmQOP13MoJhnRftKtbw8wEjK04O4xI6Dls8R0dc6";
+const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}`
 export async function fetchApodData() {
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(apodApiUrl);
     const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
     if (!response.ok) {
       throw new Error("Network response was not ok");
