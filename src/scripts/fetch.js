@@ -1,7 +1,7 @@
-const nasaKey = "kmQOP13MoJhnRftKtbw8wEjK04O4xI6Dls8R0dc6";
-const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}`
+const NASA_TOKEN = import.meta.env.NASA_KEY
+const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${NASA_TOKEN}`
 
-export async function fetchApodData() {
+export const fetchApodData = async () => {
   try {
     const response = await fetch(apodApiUrl);
     const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
@@ -17,6 +17,7 @@ export async function fetchApodData() {
   }
 }
 
+/*
 function getCurrentDate() {
   const today = new Date();
   const year = today.getFullYear();
@@ -43,7 +44,6 @@ function saveApodDataToCache(apodData) {
   localStorage.setItem('listApodData', JSON.stringify(list));
 }
 
-/*
 export async function getApodData() {
   const cachedApodData = getCurrentApodData();
   if (cachedApodData && cachedApodData.date === getCurrentDate()) {
