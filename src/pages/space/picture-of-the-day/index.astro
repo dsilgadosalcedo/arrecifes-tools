@@ -9,9 +9,16 @@ const apodData = await fetchApodData()
 <BaseLayout pageTitle={pageTitle}>
   <div id="imgBanner" class="
   transition-opacity duration-150 ease-in opacity-0 hover:opacity-100
-  fixed w-screen h-screen bg-cold-500/50 backdrop-blur-sm z-50 justify-center items-center overflow-y-scroll top-0 hidden sm:flex sm:hidden hover:cursor-pointer
+  fixed w-screen h-screen bg-cold-500/50 backdrop-blur-sm z-50 top-0 
+  justify-center items-center overflow-y-scroll
+  hidden sm:flex sm:hidden hover:cursor-pointer
   ">
-    <img src={apodData.url}  class="absolute top-0 rounded-3xl" alt="Imagen  del día">
+    <div class="absolute top-0">
+      <div class="h-8 w-full"></div>
+      <img src={apodData.url} class="rounded-3xl" alt="Imagen  del día">
+      <div class="h-8 w-full"></div>
+    </div>
+    
   </div>
   <section class="p-4 pb-0 sm:p-8 sm:pb-0">
     <h1 lang="en" class="text-3xl font-splineSans-bold font-bold">{apodData.title}</h1>
@@ -69,4 +76,3 @@ const apodData = await fetchApodData()
     }
   </script>
 </BaseLayout>
-../../../scripts/fetch.js

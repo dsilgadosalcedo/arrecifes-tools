@@ -1,5 +1,6 @@
 const nasaKey = "kmQOP13MoJhnRftKtbw8wEjK04O4xI6Dls8R0dc6";
 const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}`
+
 export async function fetchApodData() {
   try {
     const response = await fetch(apodApiUrl);
