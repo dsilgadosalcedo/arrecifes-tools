@@ -3,10 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import Section from "../components/Section.astro";
 import Cards from "../components/Cards.astro";
 import NewFeature from "../components/NewFeature.astro"
-import { fetchApodData } from "../scripts/fetch.js"
 
 const pageTitle = "Arrecife"
-const apodData = await fetchApodData()
 ---
 <BaseLayout pageTitle={pageTitle}>
 	<h1 class="
@@ -24,8 +22,8 @@ const apodData = await fetchApodData()
 		<NewFeature />
 		<Section sectionTitle="La foto del día">
 			<div>
-				<a href={apodData.hdurl} target="_blank">
-					<img src={apodData.url} alt="Mírate! Tú eres la foto del día" class="
+				<div id="link-to-image">
+					<img id="apod-image" src="" alt="Mírate! Tú eres la foto del día" class="
 						w-full sm:h-screen object-cover
 						rounded-[38px] shadow-lg shadow-indigo-950
 					">
@@ -35,18 +33,17 @@ const apodData = await fetchApodData()
 						class=" hidden sm:inline-block w-96 truncate relative
 						bottom-16 text-gray-300 text-sm font-splineSans-regular py-2 px-4 z-50 rounded-lg bg-cold-500/50 hover:bg-cold-500/80 ml-6 overflow-hidden duration-200" 
 						>
-						<span>
-							{apodData.explanation ? apodData.explanation : "Click to see more"}
+						<span id="apod-explanation">
 						</span>
 					</a>
-				</a>
+				</div>
 				<div class="flex justify-end relative top-4 sm:top-0 mr-6">
 					<a 
+						id="apod-title"
 						lang="en" 
 						href="./space/picture-of-the-day/" 
 						class="text-lg underline hover:text-cold-300 duration-200"
 						>
-							{apodData.title}
 					</a>
 				</div>
 			</div>
@@ -54,35 +51,20 @@ const apodData = await fetchApodData()
 	</div>
 </BaseLayout>
 
-<!-- 
-<script>
 
-	const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.NASA_KEY}`
+<script type="module">
+	import { getApodData } from "/scripts/fetch.mjs"
+	const apodData = await getApodData()
+	console.log(apodData)
+	const link = document.querySelector("#link-to-image")
+	const img = document.querySelector("#apod-image")
+	const explanation = document.querySelector("#apod-explanation")
+	const title = document.querySelector("#apod-title")
 
-	const apodData = await fetchApodData()
-	const link = document.querySelector("#link")
-	const img = document.querySelector("#img")
-	const explanation = document.querySelector("#explanation")
-	const title = document.querySelector("#title")
-
-	link.setAttribute("href", apodData.hdurl)
+	link.addEventListener('click', () => {
+		window.open(apodData.hdurl, '_blank')
+	})
 	img.setAttribute("src", apodData.url)
 	explanation.innerText = apodData.explanation || "Click to see more";
 	title.innerText = apodData.title
-
-	async function fetchApodData() {
-		try {
-			const response = await fetch(apodApiUrl);
-			const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
-			}
-
-			const data = await response.json();
-			data.rateLimitRemaining = rateLimitRemaining;
-			return data;
-		} catch (error) {
-			throw error;
-		}
-	}
-</script> -->
+</script>
