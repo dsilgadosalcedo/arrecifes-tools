@@ -64,8 +64,7 @@ const pageTitle = "Foto del día"
   </section>
 
 <script type="module">
-  // import dotenv from 'dotenv'
-	// dotenv.config()
+  NASA_KEY='kmQOP13MoJhnRftKtbw8wEjK04O4xI6Dls8R0dc6'
 
   // animation
   const img = document.querySelector('#apod-img')
@@ -98,7 +97,7 @@ const pageTitle = "Foto del día"
   date.innerText = data.date
 
 	async function fetchApodData() {
-		const NASA_TOKEN = import.meta.env.NASA_KEY
+		const NASA_TOKEN = NASA_KEY
 		const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${NASA_TOKEN}`
 
 		try {
