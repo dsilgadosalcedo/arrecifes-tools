@@ -1,10 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro"
-import { fetchApodData } from "../../../scripts/fetch.mts"	
 import Link from "../../../components/Link.astro"
 
 const pageTitle = "Foto del día"
-const apodData = await fetchApodData()
 ---
 <BaseLayout pageTitle={pageTitle}>
   <div id="banner" class="
@@ -71,11 +69,11 @@ const apodData = await fetchApodData()
   const img = document.querySelector('#apod-img')
   const imgBanner = document.querySelector('#banner')
 
-  imgBanner.addEventListener("click", toggleClass)
-  img.addEventListener("click", toggleClass)
+  imgBanner?.addEventListener("click", toggleClass)
+  img?.addEventListener("click", toggleClass)
 
   function toggleClass() {
-    imgBanner.classList.toggle('sm:hidden')
+    imgBanner?.classList.toggle('sm:hidden')
   }
 </script>
 
@@ -92,14 +90,14 @@ const apodData = await fetchApodData()
   const linkSeeHD = document.querySelector('#link-see-hd')
   const date = document.querySelector('#apod-date')
 
-	img.setAttribute("src", data.url)
-	bannerImg.setAttribute("src", data.url)
-	explanation.innerText = data.explanation || "Click to see more";
-	title.innerText = data.title
-  linkDownload.setAttribute('download', data.url)
-  linkDownloadHD.setAttribute('download', data.hdurl)
-  linkSeeHD.setAttribute('href', data.hdurl)
-  date.innerText = data.date
+	img?.setAttribute("src", data.url)
+	bannerImg?.setAttribute("src", data.url)
+	explanation?.innerText = data.explanation || "Click to see more";
+	title?.innerText = data.title
+  linkDownload?.setAttribute('download', data.url)
+  linkDownloadHD?.setAttribute('download', data.hdurl)
+  linkSeeHD?.setAttribute('href', data.hdurl)
+  date?.innerText = data.date
 
 	async function fetchApodData() {
 		const NASA_TOKEN = import.meta.env.NASA_KEY
