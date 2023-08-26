@@ -54,7 +54,7 @@ const pageTitle = "Arrecife"
 		</Section>
 	</div>
 
-	<script>
+	<script type="module">
 		const data = await getApodData()
 	
 		const img = document.querySelector("#apod-img")
@@ -62,7 +62,7 @@ const pageTitle = "Arrecife"
 		const title = document.querySelector("#apod-title")
 	
 		img?.setAttribute("src", data.url)
-		explanation?.innerText = data.explanation || "Click to see more";
+		explanation?.innerText = data.explanation || "Click to see more"
 		title?.innerText = data.title
 	
 		async function fetchApodData() {
