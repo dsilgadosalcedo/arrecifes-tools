@@ -62,8 +62,8 @@ const pageTitle = "Arrecife"
 		const title = document.querySelector("#apod-title")
 	
 		img?.setAttribute("src", data.url)
-		explanation?.innerText = data.explanation || "Click to see more"
-		title?.innerText = data.title
+		explanation.innerText = data.explanation || "Click to see more"
+		title.innerText = data.title
 	
 		async function fetchApodData() {
 			const NASA_TOKEN = import.meta.env.NASA_KEY

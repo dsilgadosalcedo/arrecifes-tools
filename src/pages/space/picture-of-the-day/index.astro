@@ -91,12 +91,12 @@ const pageTitle = "Foto del día"
 
 	img?.setAttribute("src", data.url)
 	bannerImg?.setAttribute("src", data.url)
-	explanation?.innerText = data.explanation || "Click to see more";
-	title?.innerText = data.title
+	explanation.innerText = data.explanation || "Click to see more";
+	title.innerText = data.title
   linkDownload?.setAttribute('download', data.url)
   linkDownloadHD?.setAttribute('download', data.hdurl)
   linkSeeHD?.setAttribute('href', data.hdurl)
-  date?.innerText = data.date
+  date.innerText = data.date
 
 	async function fetchApodData() {
 		const NASA_TOKEN = import.meta.env.NASA_KEY
