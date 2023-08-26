@@ -7,7 +7,7 @@ const pageTitle = "Foto del día"
 const apodData = await fetchApodData()
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <div id="imgBanner" class="
+  <div id="banner" class="
   transition-opacity duration-150 ease-in opacity-0 hover:opacity-100
   fixed w-screen h-screen bg-cold-500/50 backdrop-blur-sm z-50 top-0 
   justify-center items-center overflow-y-scroll
@@ -15,33 +15,33 @@ const apodData = await fetchApodData()
   ">
     <div class="absolute top-0">
       <div class="h-8 w-full"></div>
-      <img src={apodData.url} class="rounded-3xl" alt="Imagen  del día">
+      <img id="banner-img" src='' class="rounded-3xl" alt="Imagen  del día">
       <div class="h-8 w-full"></div>
     </div>
     
   </div>
   <section class="p-4 pb-0 sm:p-8 sm:pb-0">
-    <h1 lang="en" class="text-3xl font-splineSans-bold font-bold">{apodData.title}</h1>
+    <h1 id="apod-title" lang="en" class="text-3xl font-splineSans-bold font-bold"></h1>
     <div class="md:flex w-full my-4 gap-8">
       <div class="md:w-1/2">
         <div class="flex flex-col">
           <img 
-            id="img" 
-            src={apodData.url} 
+            id="apod-img" 
+            src=''
             alt="Tú eres la foto del día"
             class="w-100 h-96 rounded-3xl object-cover hover:cursor-pointer"
           >
           <div class="m-4 flex flex-wrap gap-2">
-            <Link href={apodData.url} download>Descargar</Link>
-            <Link href={apodData.hdurl} download>Descargar HD</Link>
-            <Link href={apodData.hdurl}>Ver en HD</Link>
+            <Link id="link-download" href='#'>Descargar</Link>
+            <Link id="link-download-hd" href='#'>Descargar HD</Link>
+            <Link id="link-see-hd" href=' '>Ver en HD</Link>
           </div>
         </div>
       </div>
       <div class="md:w-1/2">
         <article class="p-4 font-splineSans-regular font-normal bg-cold-500/30 rounded-3xl">
-          <p lang="en" class=" text-white">{apodData.explanation}</p>
-          <p id="paragraphDate" class=" text-gray-300 text-sm text-end">{apodData.date}</p>
+          <p id="apod-explanation" lang="en" class=" text-white"></p>
+          <p id="apod-date" class=" text-gray-300 text-sm text-end"></p>
         </article>
         <!-- <div class="m-4 self-end">
           <label for="date">Escoge otro día</label>
@@ -64,15 +64,97 @@ const apodData = await fetchApodData()
       </div>
     </div>
   </section>
-  <script defer>
-    const img = document.querySelector("#img")
-    const imgBanner = document.querySelector("#imgBanner")
-
-    imgBanner.addEventListener("click", toggleClass)
-    img.addEventListener("click", toggleClass)
-
-    function toggleClass() {
-      imgBanner.classList.toggle('sm:hidden')
-    }
-  </script>
 </BaseLayout>
+
+<script>
+  // animation
+  const img = document.querySelector('#apod-img')
+  const imgBanner = document.querySelector('#banner')
+
+  imgBanner.addEventListener("click", toggleClass)
+  img.addEventListener("click", toggleClass)
+
+  function toggleClass() {
+    imgBanner.classList.toggle('sm:hidden')
+  }
+</script>
+
+<script type="module">
+  // data
+	const data = await getApodData()
+
+	const explanation = document.querySelector("#apod-explanation")
+	const title = document.querySelector("#apod-title")
+  const img = document.querySelector('#apod-img')
+  const bannerImg = document.querySelector('#banner-img')
+  const linkDownload = document.querySelector('#link-download')
+  const linkDownloadHD = document.querySelector('#link-download-hd')
+  const linkSeeHD = document.querySelector('#link-see-hd')
+  const date = document.querySelector('#apod-date')
+
+	img.setAttribute("src", data.url)
+	bannerImg.setAttribute("src", data.url)
+	explanation.innerText = data.explanation || "Click to see more";
+	title.innerText = data.title
+  linkDownload.setAttribute('download', data.url)
+  linkDownloadHD.setAttribute('download', data.hdurl)
+  linkSeeHD.setAttribute('href', data.hdurl)
+  date.innerText = data.date
+
+	async function fetchApodData() {
+		const NASA_TOKEN = import.meta.env.NASA_KEY
+		const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${NASA_TOKEN}`
+
+		try {
+			const response = await fetch(apodApiUrl);
+			const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
+			if (!response.ok) {
+				throw new Error("Network response was not ok");
+			}
+
+			const data = await response.json();
+			data.rateLimitRemaining = rateLimitRemaining;
+			return data;
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	function getCurrentDate() {
+		const today = new Date();
+		const year = today.getFullYear();
+		const month = String(today.getMonth() + 1).padStart(2, '0');
+		const day = String(today.getDate()).padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+
+	function getApodDataFromCache() {
+		let list = localStorage.getItem('listApodData');
+		list = list && JSON.parse(list);
+		return list
+	}
+
+	function getCurrentApodData() {
+		const list = getApodDataFromCache() ? getApodDataFromCache() : [];
+		const todayData = list && list.find(item => item.date === getCurrentDate());
+		return todayData ? todayData : null;
+	}
+
+	function saveApodDataToCache(apodData) {
+		const list = getApodDataFromCache() ? getApodDataFromCache() : [];
+		list.push(apodData);
+		localStorage.setItem('listApodData', JSON.stringify(list));
+	}
+
+	async function getApodData() {
+		const cachedApodData = getCurrentApodData();
+		if (cachedApodData && cachedApodData.date === getCurrentDate()) {
+			return cachedApodData;
+		} else {
+			const newApodData = await fetchApodData();
+			saveApodDataToCache(newApodData);
+			console.log(newApodData.rateLimitRemaining);
+			return newApodData;
+		}
+	}
+</script>

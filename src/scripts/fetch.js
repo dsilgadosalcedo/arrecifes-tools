@@ -17,7 +17,6 @@ export const fetchApodData = async () => {
   }
 }
 
-/*
 function getCurrentDate() {
   const today = new Date();
   const year = today.getFullYear();
@@ -55,4 +54,3 @@ export async function getApodData() {
     return newApodData;
   }
 }
-*/

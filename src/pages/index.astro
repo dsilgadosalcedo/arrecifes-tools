@@ -3,11 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import Section from "../components/Section.astro";
 import Cards from "../components/Cards.astro";
 import NewFeature from "../components/NewFeature.astro"
-import { fetchApodData } from "../scripts/fetch.js"
 
 const pageTitle = "Arrecife"
-const apodData = await fetchApodData()
 ---
+
 <BaseLayout pageTitle={pageTitle}>
 	<h1 class="
 		text-4xl sm:text-7xl text-center 
@@ -24,8 +23,8 @@ const apodData = await fetchApodData()
 		<NewFeature />
 		<Section sectionTitle="La foto del día">
 			<div>
-				<a href={apodData.hdurl} target="_blank">
-					<img src={apodData.url} alt="Mírate! Tú eres la foto del día" class="
+				<div>
+					<img id="apod-img" src='' alt="Mírate! Tú eres la foto del día" class="
 						w-full sm:h-screen object-cover
 						rounded-[38px] shadow-lg shadow-indigo-950
 					">
@@ -35,18 +34,19 @@ const apodData = await fetchApodData()
 						class=" hidden sm:inline-block w-96 truncate relative
 						bottom-16 text-gray-300 text-sm font-splineSans-regular py-2 px-4 z-50 rounded-lg bg-cold-500/50 hover:bg-cold-500/80 ml-6 overflow-hidden duration-200" 
 						>
-						<span>
-							{apodData.explanation ? apodData.explanation : "Click to see more"}
+						<span id="apod-explanation">
+							<!-- {apodData.explanation ? apodData.explanation : "Click to see more"} -->
 						</span>
 					</a>
-				</a>
+				</div>
 				<div class="flex justify-end relative top-4 sm:top-0 mr-6">
 					<a 
+						id="apod-title"
 						lang="en" 
 						href="./space/picture-of-the-day/" 
 						class="text-lg underline hover:text-cold-300 duration-200"
 						>
-							{apodData.title}
+							<!-- {apodData.title} -->
 					</a>
 				</div>
 			</div>
@@ -54,23 +54,24 @@ const apodData = await fetchApodData()
 	</div>
 </BaseLayout>
 
-<!-- 
-<script>
 
-	const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.NASA_KEY}`
+<script type="module">
+	const data = await getApodData()
 
-	const apodData = await fetchApodData()
-	const link = document.querySelector("#link")
-	const img = document.querySelector("#img")
-	const explanation = document.querySelector("#explanation")
-	const title = document.querySelector("#title")
+	const img = document.querySelector("#apod-img")
+	const explanation = document.querySelector("#apod-explanation")
+	const title = document.querySelector("#apod-title")
 
-	link.setAttribute("href", apodData.hdurl)
-	img.setAttribute("src", apodData.url)
-	explanation.innerText = apodData.explanation || "Click to see more";
-	title.innerText = apodData.title
+	img.setAttribute("src", data.url)
+	explanation.innerText = data.explanation || "Click to see more";
+	title.innerText = data.title
+
+
 
 	async function fetchApodData() {
+		const NASA_TOKEN = import.meta.env.NASA_KEY
+		const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${NASA_TOKEN}`
+
 		try {
 			const response = await fetch(apodApiUrl);
 			const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
@@ -85,4 +86,42 @@ const apodData = await fetchApodData()
 			throw error;
 		}
 	}
-</script> -->
+
+	function getCurrentDate() {
+		const today = new Date();
+		const year = today.getFullYear();
+		const month = String(today.getMonth() + 1).padStart(2, '0');
+		const day = String(today.getDate()).padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+
+	function getApodDataFromCache() {
+		let list = localStorage.getItem('listApodData');
+		list = list && JSON.parse(list);
+		return list
+	}
+
+	function getCurrentApodData() {
+		const list = getApodDataFromCache() ? getApodDataFromCache() : [];
+		const todayData = list && list.find(item => item.date === getCurrentDate());
+		return todayData ? todayData : null;
+	}
+
+	function saveApodDataToCache(apodData) {
+		const list = getApodDataFromCache() ? getApodDataFromCache() : [];
+		list.push(apodData);
+		localStorage.setItem('listApodData', JSON.stringify(list));
+	}
+
+	async function getApodData() {
+		const cachedApodData = getCurrentApodData();
+		if (cachedApodData && cachedApodData.date === getCurrentDate()) {
+			return cachedApodData;
+		} else {
+			const newApodData = await fetchApodData();
+			saveApodDataToCache(newApodData);
+			console.log(newApodData.rateLimitRemaining);
+			return newApodData;
+		}
+	}
+</script>
