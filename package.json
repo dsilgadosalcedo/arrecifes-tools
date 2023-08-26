@@ -1,7 +1,7 @@
 {
   "name": "arrecife",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,9 +12,10 @@
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
     "astro": "^2.9.6",
+    "dotenv": "^16.3.1",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "tailwindcss-animated": "^1.0.1"
+    "tailwindcss-animated": "1.0.1"
   }
 }

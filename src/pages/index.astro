@@ -55,6 +55,9 @@ const pageTitle = "Arrecife"
 	</div>
 
 	<script type="module">
+		import dotenv from 'dotenv'
+		dotenv.config()
+
 		const data = await getApodData()
 	
 		const img = document.querySelector("#apod-img")

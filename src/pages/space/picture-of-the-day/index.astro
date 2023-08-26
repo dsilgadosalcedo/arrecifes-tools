@@ -62,9 +62,12 @@ const pageTitle = "Foto del día"
       </div>
     </div>
   </section>
-</BaseLayout>
 
-<script>
+  
+<script type="module">
+  import dotenv from 'dotenv'
+	dotenv.config()
+
   // animation
   const img = document.querySelector('#apod-img')
   const imgBanner = document.querySelector('#banner')
@@ -75,14 +78,11 @@ const pageTitle = "Foto del día"
   function toggleClass() {
     imgBanner?.classList.toggle('sm:hidden')
   }
-</script>
-
-<script type="module">
+  
 	const data = await getApodData()
 
 	const explanation = document.querySelector("#apod-explanation")
 	const title = document.querySelector("#apod-title")
-  const img = document.querySelector('#apod-img')
   const bannerImg = document.querySelector('#banner-img')
   const linkDownload = document.querySelector('#link-download')
   const linkDownloadHD = document.querySelector('#link-download-hd')
@@ -91,7 +91,7 @@ const pageTitle = "Foto del día"
 
 	img?.setAttribute("src", data.url)
 	bannerImg?.setAttribute("src", data.url)
-	explanation.innerText = data.explanation || "Click to see more";
+	explanation.innerText = data.explanation || "Click to see more"
 	title.innerText = data.title
   linkDownload?.setAttribute('download', data.url)
   linkDownloadHD?.setAttribute('download', data.hdurl)
@@ -155,3 +155,4 @@ const pageTitle = "Foto del día"
 		}
 	}
 </script>
+</BaseLayout>
