@@ -1,4 +1,13 @@
-const cards = [
+type Card = {
+  title: string
+  description: string
+  url: string
+  image: string
+  firstColor: string
+  secondColor: string
+}
+
+const cards: Card[] = [
   {
     title: "Space",
     description: "Nuestras herramientas celestiales.",
@@ -49,6 +58,6 @@ const cards = [
   },
 ]   
 
-export function getTools() {
+export function getTools(): Card[] {
   return cards;
 }

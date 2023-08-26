@@ -1,5 +1,6 @@
-const NASA_TOKEN = import.meta.env.NASA_KEY
-const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${NASA_TOKEN}`
+const NASA_TOKEN: string = import.meta.env.NASA_KEY
+console.log('token',NASA_TOKEN)
+const apodApiUrl: string = `https://api.nasa.gov/planetary/apod?api_key=${NASA_TOKEN}`
 
 export const fetchApodData = async () => {
   try {
@@ -17,6 +18,7 @@ export const fetchApodData = async () => {
   }
 }
 
+/*
 function getCurrentDate() {
   const today = new Date();
   const year = today.getFullYear();
@@ -54,3 +56,4 @@ export async function getApodData() {
     return newApodData;
   }
 }
+*/
