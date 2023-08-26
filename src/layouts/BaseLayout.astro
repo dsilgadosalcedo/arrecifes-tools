@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro";
 
-const {pageTitle} = Astro.props
+const {pageTitle, subPage} = Astro.props
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -17,7 +17,7 @@ const {pageTitle} = Astro.props
   m-0 p-0 bg-cold-800
 ">
   <div class="flex flex-col min-h-screen" >
-    <Header />
+    <Header subPage={subPage} />
     <main class="m-0 flex flex-col flex-grow">
       <slot />
     </main>

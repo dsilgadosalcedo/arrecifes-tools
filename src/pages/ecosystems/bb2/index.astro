@@ -5,17 +5,16 @@ import Link from "../../../components/Link.astro";
 const back = "rgb(147, 128, 255, 0.3)";
 ---
 
-<BaseLayout pageTitle="BB2">
+<BaseLayout pageTitle="BB2" subPage="Ecosystems">
   <h1 class="text-2xl text-center font-monoDisplay-normal font-normal mb-4 sm:mb-8">BB2</h1>
-  <div class="flex flex-grow w-full gap-4 px-4 sm:px-8">
+  <div class="sm:flex sm:flex-grow sm:gap-4 px-4 sm:px-8">
     <section class="sm:w-3/5 sm:border-2 rounded-3xl border-cold-400/30 relative">
-      <div class="flex relative w-96 items-center justify-center px-4 gap-16 pr-6 border-b-2 border-cold-400/30 text-white mx-auto">
+      <div class="flex relative w-80 sm:w-96 items-center justify-center px-4 gap-16 pr-6 border-b-2 border-cold-400/30 text-white mx-auto">
         <input id="input" type="text" placeholder="Escribe aquí" class="w-96 p-2 text-center text-md bg-transparent font-splineSans-regular font-normal outline-none">
-        <div class="absolute right-2 cursor-pointer">
+        <div id="search-icon" class="absolute right-2 cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 -960 960 960" width="28"><path d="M80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q137 0 241.5 80T863-595q4 13-2 24.5t-18.879 14.773Q830-553 820-560.5q-10-7.5-14-19.5-22-74-74-131.5T607-799v18q0 35-24 61t-59 26h-87v87q0 16.575-13.5 27.787Q410-568 393-568h-83v88h80q12.75 0 21.375 8.625T420-450v95h-67L149-559q-5 20-7 39.667-2 19.666-2 39.333 0 128.02 82.5 223.51Q305-161 431-144q11.676 1.68 19.338 11.34Q458-123 458-110.5T448.859-90q-9.141 8-21.859 6-148-20-247.5-131.5T80-480Zm749 351L716-241q-21 15-45.5 23t-50.065 8q-71.015 0-120.725-49.618Q450-309.235 450-380.118 450-451 499.618-500.5q49.617-49.5 120.5-49.5Q691-550 740.5-500.29T790-379.565q0 25.565-8.5 50.065Q773-305 759-283l112 112q9 9 9.5 21t-8.5 21q-9 9-21.5 9t-21.5-9ZM619.859-270Q666-270 698-301.859q32-31.859 32-78T698.141-458q-31.859-32-78-32T542-458.141q-32 31.859-32 78T541.859-302q31.859 32 78 32Z" fill="currentColor"/></svg>
         </div>
       </div>
-      
       <div class="flex flex-col results overflow-y-scroll sm:h-[430px]">
         <div id="results-container" class="flex flex-col gap-2 m-2">
           <!-- <div class="h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden">
@@ -33,9 +32,9 @@ const back = "rgb(147, 128, 255, 0.3)";
           </div> -->
         </div>
         
-        <div class="bg-gradient-to-b from-transparent to-cold-800 h-20 relative bottom-14 rounded-b-3xl mx-2 z-40"></div>
+        <!-- <div class="bg-gradient-to-b from-transparent to-cold-800 h-20 relative bottom-14 rounded-b-3xl mx-2 z-40"></div> -->
 
-        <div class="flex justify-center py-4">
+        <div id="see-more-button" class="flex justify-center py-4 hidden">
           <Link href="#">Ver más resultados</Link>
         </div>
       </div>
@@ -43,25 +42,24 @@ const back = "rgb(147, 128, 255, 0.3)";
       <style define:vars={{back}}>
         @media (min-width: 576px) {
           .results::-webkit-scrollbar {
-          width: 10px;
-          height: 10px;
-          background-color: transparent;
-          border-radius: 40px;
-        }
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+          }
 
-        .results::-webkit-scrollbar-thumb {
-          background-color: var(--back);
-          border-radius: 6px 0 0 6px;
-        }
+          .results::-webkit-scrollbar-thumb {
+            background-color: var(--back);
+            border-radius: 6px 0 0 6px;
+          }
 
-        .results::-webkit-scrollbar-button {
-          background-color: transparent;
-        }
+          .results::-webkit-scrollbar-button {
+            background-color: transparent;
+          }
 
-        .results::-webkit-scrollbar-track {
-          background-color: var(--back);
-          border-radius: 6px 0 0 6px;
-        }
+          .results::-webkit-scrollbar-track {
+            background-color: var(--back);
+            border-radius: 6px 0 0 6px;
+          }
         }
       </style>
     </section>
@@ -73,24 +71,31 @@ const back = "rgb(147, 128, 255, 0.3)";
   </div>
 </BaseLayout>
 
-<script>
-  const audioElement = new Audio('/sounds/click.mp3');
+<script type='module'>
   const input = document.querySelector("#input")
-  input.addEventListener("keydown", (event) => {
-    if (event.keyCode === 13) {
-      response(input.value)
-    }
-  });
+  const searchIcon = document.querySelector('#search-icon')
+
+  if(input instanceof HTMLInputElement && searchIcon instanceof HTMLDivElement) {
+    input.addEventListener("keydown", async (event) => {
+      if (event.key === 'Enter') {
+        await response(input.value)
+      }
+    })
+    searchIcon.addEventListener('click', async () => {
+      await response(input.value)
+    })
+  }
+
+  // preload
+  const elements = createElements()
+  const stylizedElements = stylizeElements(elements)
 
   async function response(inputValue) {
-    const elements = createElements()
-    const stylizedElements = stylizeElements(elements)
     const bioUrl = `https://api.gbif.org/v1/species/search?q=${inputValue}&rank=species&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c`
-    const results = await fetchGbif(bioUrl).then((data) => {
-      return data
-    })
+    const results = await fetchGbif(bioUrl)
     const tunedResults = getInfoFromResults(results)
-    await printResults(stylizedElements, tunedResults)
+    const readyElements = await setResults(stylizedElements, tunedResults)
+    printElements(readyElements)
   }
 
   function createElements() {
@@ -111,14 +116,14 @@ const back = "rgb(147, 128, 255, 0.3)";
 
   function stylizeElements(elements) {
     const styles = {
-      "divContainer" : "h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between gap-2 font-splineSans-regular font-normal relative overflow-hidden",
-      "divSection1" : "flex p-2 gap-4",
+      "divContainer" : "h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex justify-between font-splineSans-regular font-normal relative overflow-hidden animate-fade animate-once animate-duration-300 animate-ease-out",
+      "divSection1" : "flex p-2 gap-4 z-20",
       "divS11" : "w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full",
       "divS12" : "flex flex-col justify-center",
       "em" : "text-md",
       "p" : "text-sm",
-      "divSection2" : "w-56 h-20",
-      "img" : "object-cover w-full h-full",
+      "divSection2" : "w-56 h-20 absolute right-0 z-10",
+      "img" : "object-cover w-full h-full absolute -right-[1px]",
       "divGradientEffect" : "w-56 h-20 bg-gradient-to-r from-cold-600 to-transparent absolute top-0"
     }
 
@@ -132,63 +137,58 @@ const back = "rgb(147, 128, 255, 0.3)";
     return elements
   }
 
-  async function fetchGbif(word) {
+  async function fetchGbif(url) {
     try {
-      const response = await fetch(word);
+      const response = await fetch(url)
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Network response was not ok")
       }
-      const data = await response.json();
-      return data;
+      const data = await response.json()
+      return data
     } catch (error) {
-      throw error;
+      throw error
     }
   }
 
   function getInfoFromResults(results) {
-    let turnedResults = []
-    console.log(results)
+    let tunedResults = []
     const resultados = results.results
-    console.log(results.results)
-    resultados.map(record => {
+    resultados.map( async (record) => {
       const rank = record.rank.toLocaleLowerCase()
       const species = record.species
       const speciesKey = record.speciesKey
-      turnedResults.push({rank, species, speciesKey})
+      tunedResults.push({rank, species, speciesKey})
     })
-    return turnedResults
+    return tunedResults
   }
 
-  async function printResults(elements, results) {
-  const resultsContainer = document.querySelector("#results-container");
-  resultsContainer.innerHTML = "";
+  async function setResults(elements, results) {
+    const resultElements = await Promise.all(results.map( async(result) => {
+      const divContainer = elements.divContainer.cloneNode(true);
+      const divSection1 = elements.divSection1.cloneNode(true);
+      const divSection2 = elements.divSection2.cloneNode(true);
+      const divS11 = elements.divS11.cloneNode(true);
+      const divS12 = elements.divS12.cloneNode(true);
+      const em = elements.em.cloneNode(true);
+      const p = elements.p.cloneNode(true);
+      const img = elements.img.cloneNode(true);
+      const divGradientEffect = elements.divGradientEffect.cloneNode(true);
 
-  for (const result of results) {
-    const divContainer = elements.divContainer.cloneNode(true);
-    const divSection1 = elements.divSection1.cloneNode(true);
-    const divSection2 = elements.divSection2.cloneNode(true);
-    const divS11 = elements.divS11.cloneNode(true);
-    const divS12 = elements.divS12.cloneNode(true);
-    const em = elements.em.cloneNode(true);
-    const p = elements.p.cloneNode(true);
-    const img = elements.img.cloneNode(true);
-    const divGradientEffect = elements.divGradientEffect.cloneNode(true);
+      em.innerText = result.species;
+      p.innerText = `Rank: ${result.rank}`
+      divS12.append(em, p)
+      divSection1.append(divS11, divS12)
 
-    em.innerText = result.species;
-    p.innerText = `Rank: ${result.rank}`;
-    divS12.append(em, p);
-    divSection1.append(divS11, divS12);
+      const imageURL = await findImage(result.speciesKey)
+      img.setAttribute("src", imageURL ? imageURL : "https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn")
+      img.setAttribute("alt", result.species)
+      divSection2.append(img, divGradientEffect)
 
-    const imageURL = await findImage(result.speciesKey);
-    img.setAttribute("src", imageURL ? imageURL : "https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn");
-    img.setAttribute("alt", result.species);
-    divSection2.append(img, divGradientEffect);
-
-    divContainer.append(divSection1, divSection2);
-    resultsContainer.append(divContainer);
-    reproduceSound()
+      divContainer.append(divSection1, divSection2)
+      return divContainer
+      }))
+    return resultElements
   }
-}
 
   async function findImage(key) {
     const url = `https://api.gbif.org/v1/species/${key}/media`;
@@ -200,9 +200,23 @@ const back = "rgb(147, 128, 255, 0.3)";
     return imageURL;
   }
 
-  function reproduceSound() {
-    audioElement.currentTime = 0;
-    audioElement.play();
+  async function printElements(elements) {
+    const resultsContainer = document.querySelector("#results-container");
+    resultsContainer.innerHTML = ""
+    toggleSeeMoreButton(true)
+    for (const element of elements) {
+      resultsContainer.appendChild(element)
+      await wait(30)
+    }
+    if (elements.length > 0 ) toggleSeeMoreButton(false)
   }
 
+  function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function toggleSeeMoreButton(showORhide) {
+    const button = document.querySelector('#see-more-button')
+    showORhide ? button.classList.add('hidden') : button.classList.remove('hidden')
+  }
 </script>
