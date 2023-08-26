@@ -36,7 +36,6 @@ const pageTitle = "Arrecife"
 						>
 						<span id="apod-explanation">
 						<span id="apod-explanation">
-							<!-- {apodData.explanation ? apodData.explanation : "Click to see more"} -->
 						</span>
 					</a>
 				</div>
@@ -49,21 +48,12 @@ const pageTitle = "Arrecife"
 						href="./space/picture-of-the-day/" 
 						class="text-lg underline hover:text-cold-300 duration-200"
 						>
-							<!-- {apodData.title} -->
 					</a>
 				</div>
 			</div>
 		</Section>
 	</div>
 </BaseLayout>
-
-
-<script type="module">
-	const data = await getApodData()
-
-	const img = document.querySelector("#apod-img")
-	const explanation = document.querySelector("#apod-explanation")
-	const title = document.querySelector("#apod-title")
 
 <script type="module">
 	const data = await getApodData()
