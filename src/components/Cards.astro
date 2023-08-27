@@ -1,9 +1,10 @@
 ---
 import Card from "./Card.astro";
 import { getTools } from "../scripts/tools.js"
+
 const myCards = getTools()
 ---
-<div class="grid gap-4 grid-flow-col overflow-x-scroll sm:grid-cols-3 sm:grid-flow-row sm:overflow-auto sm:pb-2">
+<div id="cards-container" class="grid gap-4 grid-flow-col overflow-x-scroll sm:grid-cols-3 sm:grid-flow-row sm:overflow-visible sm:pb-2">
   {
     myCards.map((card) =>
       <Card 
@@ -17,3 +18,43 @@ const myCards = getTools()
     )
   }
 </div>
+
+<script>
+  const cards = document.querySelectorAll('.card')
+  const height = cards[0].clientHeight
+  const width = cards[0].clientWidth
+
+  cards.forEach(card => {
+    if (card instanceof HTMLAnchorElement) {
+      card.addEventListener('mousemove', (event) => {
+        // mouse coordinates
+        const {layerX, layerY} = event
+
+        // calculus
+        const yRotation = (
+          (layerX - width / 2) / width
+        ) * 20
+        const xRotation = (
+          (layerY - height / 2) / height
+        ) * 20
+
+        // transformations
+        const string = `
+          perspective(1200px)
+          rotateX(${xRotation}deg)
+          rotateY(${-yRotation}deg)
+        `
+
+        card.style.transform = string
+      })
+
+      card.addEventListener('mouseout', () => {
+        card.style.transform = `
+          perspective(1200px)
+          rotateX(0)
+          rotateY(0)
+        `
+      })
+    }
+  })
+</script>

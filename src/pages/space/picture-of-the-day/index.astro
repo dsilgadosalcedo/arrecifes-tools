@@ -7,7 +7,7 @@ const pageTitle = "Foto del día"
 <BaseLayout pageTitle={pageTitle}>
   <div id="banner" class="
   transition-opacity duration-150 ease-in opacity-0 hover:opacity-100
-  fixed w-screen h-screen bg-cold-500/50 backdrop-blur-sm z-50 top-0 
+  fixed w-screen h-screen bg-cold-800/50 backdrop-blur-sm z-50 top-0 
   justify-center items-center overflow-y-scroll
   hidden sm:flex sm:hidden hover:cursor-pointer
   ">
@@ -30,9 +30,7 @@ const pageTitle = "Foto del día"
             class="w-100 h-96 rounded-3xl object-cover hover:cursor-pointer"
           >
           <div class="m-4 flex flex-wrap gap-2">
-            <Link id="link-download" href='#'>Descargar</Link>
-            <Link id="link-download-hd" href='#'>Descargar HD</Link>
-            <Link id="link-see-hd" href=' '>Ver en HD</Link>
+            <Link id="link-see-hd">Ver en HD</Link>
           </div>
         </div>
       </div>
@@ -82,8 +80,6 @@ const pageTitle = "Foto del día"
 	const explanation = document.querySelector("#apod-explanation")
 	const title = document.querySelector("#apod-title")
   const bannerImg = document.querySelector('#banner-img')
-  const linkDownload = document.querySelector('#link-download')
-  const linkDownloadHD = document.querySelector('#link-download-hd')
   const linkSeeHD = document.querySelector('#link-see-hd')
   const date = document.querySelector('#apod-date')
 
@@ -91,8 +87,6 @@ const pageTitle = "Foto del día"
 	bannerImg?.setAttribute("src", data.url)
 	explanation.innerText = data.explanation || "Click to see more"
 	title.innerText = data.title
-  linkDownload?.setAttribute('download', data.url)
-  linkDownloadHD?.setAttribute('download', data.hdurl)
   linkSeeHD?.setAttribute('href', data.hdurl)
   date.innerText = data.date
 

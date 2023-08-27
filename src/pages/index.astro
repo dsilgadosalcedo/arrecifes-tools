@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
-import Section from "../components/Section.astro";
-import Cards from "../components/Cards.astro";
+import Section from "../components/Section.astro"
+import Cards from "../components/Cards.astro"
 import NewFeature from "../components/NewFeature.astro"
 
 const pageTitle = "Arrecife"
@@ -51,6 +51,27 @@ const pageTitle = "Arrecife"
 			</div>
 		</Section>
 	</div>
+
+	<style>
+		@keyframes show {
+			from {
+				opacity: 0.7;
+				scale:80%;
+			}
+			to {
+				opacity: 1;
+				scale:100%;
+			}
+		}
+		#apod-img {
+			view-timeline-name: --revealing-image;
+			animation-name:show;
+			animation-fill-mode: both;
+
+			animation-timeline: --revealing-image;
+			animation-range: entry 5% cover 50%;
+		}
+	</style>
 
 	<script type="module">
 		const NASA_KEY='kmQOP13MoJhnRftKtbw8wEjK04O4xI6Dls8R0dc6'
