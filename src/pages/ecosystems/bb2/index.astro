@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro"
 import Link from "../../../components/Link.astro"
 import Section from "../../../components/Section.astro"
+import Loader from "../../../components/Loader.astro"
 
 const back = "rgb(147, 128, 255, 0.3)"
 ---
@@ -18,12 +19,14 @@ const back = "rgb(147, 128, 255, 0.3)"
         </div>
       </div>
       <div 
-        class="sm:h-[59.5vh] sm:overflow-y-scroll flex flex-col pt-2 sm:px-2 results rounded-b-3xl">
-        <span id="span-loader" class="animate-spin animate-duration-[1400ms] text-3xl text-center hidden">🛰️</span>
+        class="results-section sm:h-[59.5vh] sm:overflow-y-scroll flex flex-col pt-2 sm:px-2 results rounded-b-3xl">
         <div id="results-container" class="flex flex-col gap-2">      
         </div>
-        <div id="see-more-button" class="mx-auto py-4 hidden">
-          <Link href="#">Ver más resultados</Link>
+        <div class="mx-auto py-4">
+          <Loader />
+          <div id="see-more-button" class="hidden">
+            <Link href="#">Ver más resultados</Link>            
+          </div>
         </div>
       </div>
       <style define:vars={{back}}>
@@ -50,57 +53,62 @@ const back = "rgb(147, 128, 255, 0.3)"
         }
       </style>
     </section>
-    <section class="sm:w-2/5 hidden sm:flex flex-col gap-8 items-center">
-      <div class="w-full h-72 bg-cold-600 rounded-3xl"></div>
-      <em class="text-2xl font-splineSans-regular">Morpho Catalicéis</em>
-      <Link href="#">Ver más info</Link>
+    <section class="sm:w-2/5 hidden sm:flex flex-col items-center">
+      <div class="flex-grow h-96 w-full bg-cold-600/50 rounded-3xl overflow-hidden relative">
+        <img src="/img/map.png" class="h-full w-full object-cover absolute -z-10">
+        <img id='map' class="h-full w-full object-cover hidden" alt="Mapa de avistamientos">
+        <div class="absolute w-full flex justify-center bottom-6">
+          <span id="map-status" class="font-splineSans-regular text-white hidden">Sin avistamientos registrados</span>
+        </div>
+      </div>
+      <em id='species-name' class="text-2xl my-8 font-splineSans-regular">-</em>
     </section>
   </Section>
 </BaseLayout>
 
-<script type='module'>
+<script>
   const input = document.querySelector('#input')
   const searchIcon = document.querySelector('#search-icon')
+  const mapImage = document.querySelector('#map')
+  const speciesName = document.querySelector('#species-name')
+  const resultsContainer = document.querySelector("#results-container")
+  const seeMoreButton = document.querySelector("#see-more-button")
+  const elements = createElements()
+  const stylizedElements = stylizeElements(elements)
   let inputValue = ''
   let offset = 0
-
+  
   if(input instanceof HTMLInputElement && searchIcon instanceof HTMLDivElement) {
     input.addEventListener('keydown', async (event) => {
       if (event.key === 'Enter') {
+        resultsContainer.innerHTML = ''
         inputValue = input.value
         await response(false)
       }
     })
     searchIcon.addEventListener('click', async () => {
+      resultsContainer.innerHTML = ''
       inputValue = input.value
       await response(false)
     })
   }
-
-  // preload
-  const elements = createElements()
-  const stylizedElements = stylizeElements(elements)
-  const resultsContainer = document.querySelector("#results-container")
-  const seeMoreButton = document.querySelector("#see-more-button")
 
   seeMoreButton.addEventListener('click', () => {
     response(true)
   })
 
   async function response(newElements) {
-    toggleLoader(newElements)
+    toggleHidden('.results-section .loader')
+    toggleHidden('#see-more-button', false)
     newElements ? offset += 20 : offset = 0
+
     const bioUrl = `https://api.gbif.org/v1/species/search?q=${inputValue}&limit=20&offset=${offset}&rank=species&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c`
     const results = await fetchGbif(bioUrl)
     const tunedResults = getInfoFromResults(results)
     const readyElements = await setResults(stylizedElements, tunedResults)
 
-    toggleLoader(newElements)
-    if (readyElements.length > 0) {
-      printElements(readyElements, newElements)
-    } else {
-      notFound(newElements)
-    }
+    toggleHidden('.results-section .loader')
+    printElements(readyElements)
   }
 
   function createElements() {
@@ -121,7 +129,7 @@ const back = "rgb(147, 128, 255, 0.3)"
 
   function stylizeElements(elements) {
     const styles = {
-      "divContainer" : "h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex flex-grow-0 justify-between font-splineSans-regular font-normal relative overflow-hidden animate-fade-up animate-once animate-duration-300 animate-ease-out",
+      "divContainer" : "h-20 bg-cold-600 rounded-xl sm:hover:shadow-cold-500/50 shadow-md transition-all cursor-pointer duration-100 ease-in flex flex-grow-0 justify-between font-splineSans-regular font-normal relative overflow-hidden animate-fade-up animate-once animate-duration-300 animate-ease-out result-card",
       "divSection1" : "flex p-2 gap-4 z-20",
       "divS11" : "w-2 h-full bg-gradient-to-b from-cold-400/50 to-cold-400 rounded-full",
       "divS12" : "flex flex-col justify-center",
@@ -157,16 +165,13 @@ const back = "rgb(147, 128, 255, 0.3)"
 
   function getInfoFromResults(results) {
     let tunedResults = []
-    console.log(results)
     const resultados = results.results
     resultados.map( async (record) => {
       const rank = record.rank.toLocaleLowerCase()
       const species = record.species
       const speciesKey = record.speciesKey
-      // const page = record.of
       tunedResults.push({rank, species, speciesKey})
     })
-    console.log(tunedResults)
     return tunedResults
   }
 
@@ -186,62 +191,78 @@ const back = "rgb(147, 128, 255, 0.3)"
       p.innerText = `Rank: ${result.rank}`
       divS12.append(em, p)
       divSection1.append(divS11, divS12)
-
-      const imageURL = await findImage(result.speciesKey)
-      img.setAttribute("src", imageURL ? imageURL : "https://th.bing.com/th/id/OIG.mpRSv28onE3UXmvfCulB?pid=ImgGn")
+      await findImage(result.speciesKey)
+        .then((url) => {
+          img.setAttribute("src", url)
+        })
       img.setAttribute("alt", result.species)
       divSection2.append(img, divGradientEffect)
 
       divContainer.append(divSection1, divSection2)
+      divContainer.setAttribute('species-key', result.speciesKey)
+      divContainer.setAttribute('species-name', result.species)
+      divContainer.addEventListener('mouseenter', () => {
+        const speciesKey = divContainer.getAttribute('species-key')
+        const speciesName = divContainer.getAttribute('species-name')
+        setMap(speciesKey, speciesName)
+      })
       return divContainer
       }))
     return resultElements
   }
 
   async function findImage(key) {
-    const url = `https://api.gbif.org/v1/species/${key}/media`;
-    const fetchResults = await fetchGbif(url);
-    const getURL = (list) => {
-      return list.find((item) => item.format.includes("image"))?.identifier;
-    };
-    const imageURL = getURL(fetchResults.results);
-    return imageURL;
+    const url = `https://api.gbif.org/v1/species/${key}/media`
+    const fetchResults = await fetchGbif(url)
+    const list = fetchResults.results
+    let getURL = list.find((item) => item.format.includes("image"))?.identifier
+    return getURL ?? '/img/plants.jpg'
   }
 
-  async function printElements(elements, newElements) {
-    newElements ? null : resultsContainer.innerHTML = ''
-    toggleSeeMoreButton(true)
-    for (const element of elements) {
-      resultsContainer.appendChild(element)
-      await wait(30)
+  async function printElements(elements) {
+    if (elements.length > 0) {
+      for (const element of elements) {
+        resultsContainer.appendChild(element)
+        await wait(30)
+      }
+      toggleHidden('#see-more-button')
+    } else {
+      finishSearch()
     }
-    if (elements.length > 0 ) toggleSeeMoreButton(false)
   }
 
   function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  function notFound(isThereNewElements) {
-    const message1 = 'Llegaste al final'
-    const message2 = 'Intenta con otro nombre'
+  function finishSearch() {
+    const message = 'Búsqueda finalizada'
     const span = document.createElement('span')
-    isThereNewElements ? span.innerText = message1 : span.innerText = message2
+    span.innerText = message
     resultsContainer.append(span)
-    toggleSeeMoreButton(true)
   }
 
-  function toggleSeeMoreButton(showORhide) {
-    const button = document.querySelector('#see-more-button')
-    if (button instanceof HTMLDivElement) {
-      showORhide ? button.classList.add('hidden') : button.classList.remove('hidden')
+  function toggleHidden(path, force = true) {
+    const element = document.querySelector(path)
+    if (!force) {
+      element.classList.contains('hidden') ? null : element.classList.toggle('hidden')
+      return
     }
+    element.classList.toggle('hidden')
   }
 
-  function toggleLoader(newElements) {
-    toggleSeeMoreButton(true)
-    const loader = document.querySelector('#span-loader')
-    newElements ? null : resultsContainer.innerHTML = ""
-    loader.classList.toggle('hidden')
+  async function setMap(key, species) {
+    toggleHidden('#map-status', false)
+    mapImage.classList.remove('hidden')
+    mapImage.setAttribute('src', `https://api.gbif.org/v2/map/occurrence/adhoc/0/0/0@1x.png?srs=EPSG:3857&speciesKey=${key}&style=blue.marker`)
+    mapImage.addEventListener('error', () => {
+      mapImage.classList.add('hidden')
+      toggleHidden('#map-status')
+    })
+    speciesName.innerText = species
+  }
+
+  function setMapStatus() {
+    
   }
 </script>
