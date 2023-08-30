@@ -61,15 +61,19 @@ const back = "rgb(147, 128, 255, 0.3)"
 <script type='module'>
   const input = document.querySelector('#input')
   const searchIcon = document.querySelector('#search-icon')
+  let inputValue = ''
+  let offset = 0
 
   if(input instanceof HTMLInputElement && searchIcon instanceof HTMLDivElement) {
-    input.addEventListener("keydown", async (event) => {
+    input.addEventListener('keydown', async (event) => {
       if (event.key === 'Enter') {
-        await response(input.value)
+        inputValue = input.value
+        await response(false)
       }
     })
     searchIcon.addEventListener('click', async () => {
-      await response(input.value)
+      inputValue = input.value
+      await response(false)
     })
   }
 
@@ -77,16 +81,26 @@ const back = "rgb(147, 128, 255, 0.3)"
   const elements = createElements()
   const stylizedElements = stylizeElements(elements)
   const resultsContainer = document.querySelector("#results-container")
-  
-  async function response(inputValue) {
-    toggleLoader()
-    const bioUrl = `https://api.gbif.org/v1/species/search?q=${inputValue}&rank=species&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c`
+  const seeMoreButton = document.querySelector("#see-more-button")
+
+  seeMoreButton.addEventListener('click', () => {
+    response(true)
+  })
+
+  async function response(newElements) {
+    toggleLoader(newElements)
+    newElements ? offset += 20 : offset = 0
+    const bioUrl = `https://api.gbif.org/v1/species/search?q=${inputValue}&limit=20&offset=${offset}&rank=species&datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c`
     const results = await fetchGbif(bioUrl)
     const tunedResults = getInfoFromResults(results)
     const readyElements = await setResults(stylizedElements, tunedResults)
 
-    toggleLoader()
-    readyElements.length > 0 ? printElements(readyElements) : notFound()
+    toggleLoader(newElements)
+    if (readyElements.length > 0) {
+      printElements(readyElements, newElements)
+    } else {
+      notFound(newElements)
+    }
   }
 
   function createElements() {
@@ -194,8 +208,8 @@ const back = "rgb(147, 128, 255, 0.3)"
     return imageURL;
   }
 
-  async function printElements(elements) {
-    resultsContainer.innerHTML = ""
+  async function printElements(elements, newElements) {
+    newElements ? null : resultsContainer.innerHTML = ''
     toggleSeeMoreButton(true)
     for (const element of elements) {
       resultsContainer.appendChild(element)
@@ -208,8 +222,12 @@ const back = "rgb(147, 128, 255, 0.3)"
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  function notFound() {
-    resultsContainer.innerHTML = "Intenta con otro nombre"
+  function notFound(isThereNewElements) {
+    const message1 = 'Llegaste al final'
+    const message2 = 'Intenta con otro nombre'
+    const span = document.createElement('span')
+    isThereNewElements ? span.innerText = message1 : span.innerText = message2
+    resultsContainer.append(span)
     toggleSeeMoreButton(true)
   }
 
@@ -220,10 +238,10 @@ const back = "rgb(147, 128, 255, 0.3)"
     }
   }
 
-  function toggleLoader() {
+  function toggleLoader(newElements) {
     toggleSeeMoreButton(true)
     const loader = document.querySelector('#span-loader')
-    resultsContainer.innerHTML = ""
+    newElements ? null : resultsContainer.innerHTML = ""
     loader.classList.toggle('hidden')
   }
 </script>
