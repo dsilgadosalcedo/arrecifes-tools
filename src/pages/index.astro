@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Section from "../components/Section.astro"
-import Cards from "../components/Cards.astro"
+import CardsSection from "../components/CardsSection.astro"
 import NewFeature from "../components/NewFeature.astro"
 
 const pageTitle = "Arrecife"
@@ -9,45 +9,35 @@ const pageTitle = "Arrecife"
 
 <BaseLayout pageTitle={pageTitle}>
 	<h1 class="
+		my-24
 		text-4xl sm:text-7xl text-center 
 		font-splineSans-bold font-bold
-		my-10
 		">
-		Herramientas a<br>
+		Herramientas a
+		<br>
 		un clic <span class="text-purple-300">(o varios)</span>
   </h1>
-	<div>
-		<Section sectionTitle="Explora nuestras categorías" mx="mr-0">
-			<Cards />
-		</Section>
+	<div class="flex flex-col gap-24">
+		<CardsSection />
 		<NewFeature />
 		<Section sectionTitle="La foto del día">
-			<div>
-				<div>
-					<img id="apod-img" src='' alt="Mírate! Tú eres la foto del día" class="
-						w-full sm:h-screen object-cover
-						rounded-[38px] shadow-lg shadow-indigo-950
-					">
-					<a
-						lang="en" 
-						href="./space/picture-of-the-day/" 
-						class=" hidden sm:inline-block w-96 truncate relative
-						bottom-16 text-gray-300 text-sm font-splineSans-regular py-2 px-4 z-50 rounded-lg bg-cold-500/50 hover:bg-cold-500/80 ml-6 overflow-hidden duration-200" 
-						>
-						<span id="apod-explanation">
-						</span>
-					</a>
-				</div>
-				<div class="flex justify-end relative top-4 sm:top-0 mr-6">
-					<a 
-						id="apod-title"
-						id="apod-title"
-						lang="en" 
-						href="./space/picture-of-the-day/" 
-						class="text-lg underline hover:text-cold-300 duration-200"
-						>
-					</a>
-				</div>
+			<img id="apod-img" src="" alt="Mírate! Tú eres la foto del día" class="rounded-3xl w-full shadow-cold-400/20 shadow-lg">
+			<div class="relative flex sm:justify-end">
+				<a
+					id="apod-explanation"
+					lang="en" 
+					href="./space/picture-of-the-day/"
+					class="hidden sm:inline-block w-96 truncate absolute text-gray-300 text-sm font-splineSans-regular py-2 px-4 z-50 rounded-lg bg-cold-500/50 hover:bg-cold-500/80 overflow-hidden duration-200
+					bottom-14 left-4"
+					>
+				</a>
+				<a 
+					id="apod-title"
+					lang="en" 
+					href="./space/picture-of-the-day/" 
+					class="text-lg underline hover:text-cold-300 duration-200 mt-4 ml-6 sm:pr-6"
+					>
+				</a>
 			</div>
 		</Section>
 	</div>
@@ -144,5 +134,3 @@ const pageTitle = "Arrecife"
 		}
 	</script>
 </BaseLayout>
-
-

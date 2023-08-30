@@ -1,9 +1,13 @@
 ---
-const {sectionTitle, mx} = Astro.props
+const { sectionTitle, fullWidth, classes } = Astro.props
+const margins:string = fullWidth ? '' : 'px-4 sm:px-8 md:px-16 lg:px-32'
 ---
-<section class=`flex flex-col my-16 pr-0 mx-4 sm:mx-8 ${mx}`>
+<section class=`relative ${margins} ${classes ?? classes }`>
   {
-    sectionTitle && <h2 class="text-3xl font-splineSans-bold font-bold mb-14 ml-4">{sectionTitle}</h2>
+    sectionTitle && 
+    <h2 class="text-2xl sm:text-3xl font-splineSans-bold font-bold mb-14 ml-4">
+      {sectionTitle}
+    </h2>
   }
   <slot />
 </section>

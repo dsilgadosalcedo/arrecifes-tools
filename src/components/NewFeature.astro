@@ -1,37 +1,39 @@
-<section class="
-  bg-gradient-to-b from-cold-800 via-cold-600 to-cold-600
-  py-32
-  flex flex-col items-center
-">
-  <header class="
-    text-center
-    font-monoDisplay-normal font-normal
-    mb-16
+---
+import Section from "./Section.astro";
+---
+<Section fullWidth=true>
+  <div class="flex flex-col gap-16 justify-center bg-gradient-to-b from-cold-800 via-cold-600 to-cold-600 px-4 sm:px-8 md:px-16 lg:px-32 h-screen
   ">
-    <h2 class="text-3xl">BB2</h2>
-    <span class="text-2xl leading-3">Buscador de Biodiversidad</span>
-  </header>
-  <div class="flex flex-col sm:flex-row sm:w-full gap-8 [&>div]:flex [&>div]:items-center [&>div]:justify-center">
-    <div class="sm:w-1/2">
-      <picture class="w-72 h-72 object-cover rounded-full z-10 sm:animate-spin sm:animate-infinite sm:animate-duration-[100000ms] sm:animate-reverse">
-        <source srcset="/img/reefTransparent.avif" type="image/avif">
-        <source srcset="/img/reef.png" type="image/png">
-        <img src="/img/reefTransparent.avif" alt="reef">
-      </picture>
-    </div>
-    <div class="sm:w-1/2">
-      <div class="flex flex-col gap-4 text-center sm:text-end w-80">
-        <p class="font-splineSans-bold text-2xl">Encuentra cualquier especie, avistamientos y más información super detallada</p>
-        <a href="/ecosystems/bb2" class="
-          p-4 
-          font-monoDisplay-normal font-normal text-center
-          bg-cold-500/50
-          border-cold-400 rounded-full
-          shadow-md shadow-cold-400/50 hover:shadow-lg hover:shadow-cold-400/50
-          hover:duration-400 hover:transition-shadow hover:ease-out
-          hover:bg-cold-500/70
-        ">Entrar al BB2</a>
+    <header class="
+      text-center
+      font-monoDisplay-normal font-normal
+      mb-16
+    ">
+      <h2 class="text-3xl">BB2</h2>
+      <span class="text-2xl leading-3">Buscador de Biodiversidad</span>
+    </header>
+    <div class="flex flex-col sm:flex-row gap-8 [&>div]:flex [&>div]:items-center [&>div]:justify-center">
+      <div class="sm:w-1/2">
+        <picture class="w-72 h-72 object-cover rounded-full z-10 sm:animate-spin sm:animate-infinite sm:animate-duration-[100000ms] sm:animate-reverse">
+          <source srcset="/img/reefTransparent.avif" type="image/avif">
+          <source srcset="/img/reef.png" type="image/png">
+          <img src="/img/reefTransparent.avif" alt="reef">
+        </picture>
+      </div>
+      <div class="sm:w-1/2">
+        <div class="flex flex-col gap-4 text-center sm:text-end md:w-80">
+          <p class="font-splineSans-bold text-2xl">Encuentra cualquier especie, avistamientos y más información super detallada</p>
+          <a href="/ecosystems/bb2" class="
+            p-4 
+            font-monoDisplay-normal font-normal text-center
+            bg-cold-500/50
+            border-cold-400 rounded-full
+            shadow-md shadow-cold-400/50 hover:shadow-lg hover:shadow-cold-400/50
+            hover:duration-400 hover:transition-shadow hover:ease-out
+            hover:bg-cold-500/70
+          ">Entrar al BB2</a>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</Section>

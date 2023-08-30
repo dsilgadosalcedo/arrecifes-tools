@@ -1,23 +1,27 @@
 ---
-import Card from "./Card.astro";
+import Card from "./Card.astro"
+import Section from "./Section.astro"
 import { getTools } from "../scripts/tools.js"
 
 const myCards = getTools()
 ---
-<div id="cards-container" class="grid gap-4 grid-flow-col overflow-x-scroll sm:grid-cols-3 sm:grid-flow-row sm:overflow-visible sm:pb-2">
-  {
-    myCards.map((card) =>
-      <Card 
-      title={card.title}
-      description={card.description}
-      url={card.url}
-      image={card.image}
-      firstColor={card.firstColor}
-      secondColor={card.secondColor}
-      />
-    )
-  }
-</div>
+
+<Section sectionTitle="Explora nuestras categorías" fullWidth=true classes="sm:px-8 md:px-16 lg:px-32">
+  <div id="cards-container" class="grid gap-4 pl-4 sm:pl-0 grid-flow-col overflow-x-scroll sm:grid-cols-2 md:grid-cols-3 sm:grid-flow-row sm:overflow-visible sm:pb-2">
+    {
+      myCards.map((card) =>
+        <Card 
+        title={card.title}
+        description={card.description}
+        url={card.url}
+        image={card.image}
+        firstColor={card.firstColor}
+        secondColor={card.secondColor}
+        />
+      )
+    }
+  </div>
+</Section>
 
 <script>
   const cards = document.querySelectorAll('.card')

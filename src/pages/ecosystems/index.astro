@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import Link from "../../components/Link.astro";
+import Section from "../../components/Section.astro"
 ---
 <BaseLayout pageTitle="Ecosystems - Arrecife">
-  
-  <section class="
+  <Section classes="
   flex flex-col flex-grow gap-4 px-4 sm:px-8 sm:[&>div]:h-0
   [&>div]:flex [&>div]:items-center [&>div]:justify-between
   sm:[&>div]:flex-grow sm:[&>div]:opacity-70 sm:[&>div]:ease-in-out sm:[&>div]:duration-300 [&>div]:h-36 sm:hover:[&>div]:h-24 sm:hover:[&>div]:opacity-100
@@ -12,22 +12,24 @@ import Link from "../../components/Link.astro";
   [&>div]:px-4 sm:[&>div]:px-0 sm:[&>div]:pl-12 [&>div]:overflow-hidden
     ">
     <div class="[&>picture]:w-52 [&>picture]:h-52 sm:[&>picture]:w-80 sm:[&>picture]:h-80 sm:[&>picture]:hover:w-96 sm:[&>picture]:hover:h-96 [&>picture]:duration-200 [&>picture]:ease-in-out
-    [&>div]:gap-2 sm:[&>div]:gap-0 sm:[&>div]:hover:gap-1
-    sm:[&>div>a]:hidden sm:[&>div>a]:hover:flex
-    relative"
-      >
-      <div class="flex flex-col z-20">
-        <h2 class="text-xl font-monoDisplay-normal text-white ">Buscador de Biodiversidad V.2<h2/>
-        <Link href="/ecosystems/bb2">Entrar al BB2</Link>
-      </div>
-      <picture class="
-      object-cover rounded-full 
-      sm:animate-spin sm:animate-infinite sm:animate-duration-[100000ms] sm:animate-reverse absolute right-0 z-10
-      opacity-50 sm:opacity-100">
-        <source srcset="/img/reefTransparent.avif" type="image/avif">
-        <source srcset="/img/reef.png" type="image/png">
-        <img src="/img/reefTransparent.avif" alt="reef">
-      </picture>
+      [&>div]:gap-2 sm:[&>div]:gap-0 sm:[&>div]:hover:gap-1
+      sm:[&>div>a]:hidden sm:[&>div>a]:hover:flex
+      relative"
+        >
+        <div class="flex flex-col z-20">
+          <h2 class="text-xl font-monoDisplay-normal text-white ">
+            Buscador de Biodiversidad V.2
+          </h2>
+          <Link href="/ecosystems/bb2">Entrar al BB2</Link>
+        </div>
+        <picture class="
+        object-cover rounded-full 
+        sm:animate-spin sm:animate-infinite sm:animate-duration-[100000ms] sm:animate-reverse absolute right-0 z-10
+        opacity-50 sm:opacity-100">
+          <source srcset="/img/reefTransparent.avif" type="image/avif">
+          <source srcset="/img/reef.png" type="image/png">
+          <img src="/img/reefTransparent.avif" alt="reef">
+        </picture>
     </div>
     <div></div>
     <div></div>
@@ -37,5 +39,5 @@ import Link from "../../components/Link.astro";
     <div></div>
     <div></div>
     <div></div>
-  </section>
+  </Section>
 </BaseLayout>
