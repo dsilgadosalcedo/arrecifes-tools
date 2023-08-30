@@ -88,12 +88,14 @@ const pageTitle = "Foto del día"
 	explanation.innerText = data.explanation || "Click to see more"
 	title.innerText = data.title
   linkSeeHD?.setAttribute('href', data.hdurl)
-  date.innerText = data.date
+  let dateString = data.copyright ? `${data.date} - ${data.copyright}` : data.date
+  console.log(dateString)
+  date.innerText = dateString
 
 	async function fetchApodData() {
 		const NASA_TOKEN = NASA_KEY
 		const apodApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${NASA_TOKEN}`
-
+    
 		try {
 			const response = await fetch(apodApiUrl);
 			const rateLimitRemaining = response.headers.get("X-RateLimit-Remaining");
