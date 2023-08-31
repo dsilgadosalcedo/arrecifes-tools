@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout pageTitle="404">
+  <h1 class="text-6xl mt-14 text-center font-splineSans-bold font-bold">404</h1>
+  <picture class="rounded-full z-10 sm:animate-spin sm:animate-infinite sm:animate-duration-[100000ms] sm:animate-reverse">
+    <source srcset="/img/reefTransparent.avif" type="image/avif">
+    <source srcset="/img/reef.png" type="image/png">
+    <img src="/img/reefTransparent.avif" alt="reef" class="w-96 mx-auto">
+  </picture>
+</BaseLayout>

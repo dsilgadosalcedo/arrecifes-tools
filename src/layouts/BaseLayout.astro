@@ -21,11 +21,13 @@ const {pageTitle, subPage} = Astro.props as Props
   m-0 p-0 
   bg-cold-800
 ">
-  <Header {subPage} />
-  <main>
-    <slot />
-  </main>
-  <Footer />
+  <div class="flex flex-col min-h-screen">
+    <Header {subPage} />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </div>
 </body>
 </html>
 
