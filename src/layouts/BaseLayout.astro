@@ -1,8 +1,12 @@
 ---
 import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro";
+import Footer from "../components/Footer.astro"
 
-const {pageTitle, subPage} = Astro.props
+interface Props {
+  pageTitle: string
+  subPage?: string
+}
+const {pageTitle, subPage} = Astro.props as Props
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -17,21 +21,15 @@ const {pageTitle, subPage} = Astro.props
   m-0 p-0 
   bg-cold-800
 ">
-  <Header subPage={subPage} />
+  <Header {subPage} />
   <main>
     <slot />
   </main>
-  <Footer pageTitle={pageTitle} />
+  <Footer />
 </body>
 </html>
 
 <style is:global>
-  :root {
-    --large: 4.8rem;
-    --medium: 3.2rem;
-    --small: 2.4rem;
-    --smaller: 1.6rem;
-  }
   * {
     box-sizing: border-box;
   }

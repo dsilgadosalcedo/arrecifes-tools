@@ -1,9 +1,9 @@
 ---
 import Card from "./Card.astro"
 import Section from "./Section.astro"
-import { getTools } from "../scripts/tools.js"
+import { cards } from "../scripts/tools"
 
-const myCards = getTools()
+const myCards = cards
 ---
 
 <Section sectionTitle="Explora nuestras categorías" fullWidth=true classes="sm:px-8 md:px-16 lg:px-32">
@@ -15,8 +15,8 @@ const myCards = getTools()
         description={card.description}
         url={card.url}
         image={card.image}
-        firstColor={card.firstColor}
-        secondColor={card.secondColor}
+        fromColor={card.fromColor}
+        toColor={card.toColor}
         />
       )
     }

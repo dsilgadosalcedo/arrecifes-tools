@@ -1,12 +1,31 @@
 ---
-const {title, description, url, image, firstColor, secondColor} = Astro.props
+type FromColor = `from-${string}`
+type ToColor = `to-${string}`
+
+interface Props {
+  title: string
+  description: string
+  url?: string
+  image: string
+  fromColor: FromColor
+  toColor: ToColor
+}
+
+const {
+  title,
+  description,
+  url = '#',
+  image,
+  fromColor,
+  toColor
+} = Astro.props as Props
 ---
 
 <a 
   href={url}
   class=`
     card
-    bg-gradient-to-bl ${firstColor} ${secondColor}
+    bg-gradient-to-bl ${fromColor} ${toColor}
     rounded-[48px]
     w-64 sm:w-full h-[500px] sm:h-80 p-6 sm:p-0
     flex flex-col justify-center items-center

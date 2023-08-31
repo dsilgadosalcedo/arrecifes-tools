@@ -2,6 +2,7 @@
 const { sectionTitle, fullWidth, classes } = Astro.props
 const margins:string = fullWidth ? '' : 'px-4 sm:px-8 md:px-16 lg:px-32'
 ---
+<!-- class:list={['relative', {margins}, {classes: classes }]} -->
 <section class=`relative ${margins} ${classes ?? classes }`>
   {
     sectionTitle && 
