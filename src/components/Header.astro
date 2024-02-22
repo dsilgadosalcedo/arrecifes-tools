@@ -1,6 +1,10 @@
 ---
 const {subPage} = Astro.props
-const navOptions = ["Inicia sesión"]
+const menu = [
+  {name: "Tienda", href:"tienda"},
+  {name: "Cursos", href:"cursos"},
+  {name: "Inicia sesión", href:"iniciarsesion"},
+  ]
 ---
 <header class="
   px-4 sm:px-8 md:px-16 lg:px-32 
@@ -30,11 +34,12 @@ const navOptions = ["Inicia sesión"]
   <nav class="hidden sm:block">
     <ul class="flex gap-4">
       {
-        navOptions.map((option) =>
+        menu.map((item) =>
           <li>
-              <a href=`/${option.toLowerCase}`
-                class="border-[3px] border-cold-400 py-2 px-4 rounded-3xl hover:rounded-2xl hover:bg-cold-700/80  ease-in-out duration-150 transition-all font-splineSans-bold font-bold"
-              >{option}</a>              
+            <a 
+              href={item.href}
+              class="border-[3px] border-cold-400 py-2 px-4 rounded-3xl hover:rounded-2xl hover:bg-cold-700/80  ease-in-out duration-150 transition-all font-splineSans-bold font-bold"
+            >{item.name}</a>              
           </li>
         )
       }
