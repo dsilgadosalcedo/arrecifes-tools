@@ -6,7 +6,7 @@ import { cards } from "../scripts/tools"
 const myCards = cards
 ---
 
-<Section sectionTitle="Explora nuestras categorías" fullWidth=true classes="sm:px-8 md:px-16 lg:px-32">
+<Section id="card-section" sectionTitle="Explora nuestras categorías" fullWidth=true classes="sm:px-8 md:px-16 lg:px-32">
   <div id="cards-container" class="grid gap-4 pl-4 sm:pl-0 grid-flow-col overflow-x-scroll sm:grid-cols-2 md:grid-cols-3 sm:grid-flow-row sm:overflow-visible sm:pb-2">
     {
       myCards.map((card) =>
@@ -22,6 +22,22 @@ const myCards = cards
     }
   </div>
 </Section>
+
+<style>
+  @keyframes hide {
+    from {
+      transform: scale(1);
+    } to {
+      transform: scale(1.4);
+    }
+  }
+
+  #card-section {
+    animation: hide linear;
+    animation-timeline: scroll(vertical, root);
+    animation-duration: auto;
+  }
+</style>
 
 <script>
   const cards = document.querySelectorAll('.card')
