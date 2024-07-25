@@ -1,4 +1,34 @@
 /**
+ * Divides text into paragraphs and converts parentheses content to span tags.
+ *
+ * @param text - The input text to process.
+ * @param targetLength - The approximate desired length of each paragraph. Defaults to 350.
+ * @returns An array of processed paragraph strings.
+ */
+export function processText(
+	text: string,
+	targetLength: number = 350
+): string[] {
+	const paragraphs = divideTextIntoParagraphs(text, targetLength)
+	return paragraphs.map(convertParenthesesToSpans)
+}
+
+/**
+ * Converts text within parentheses to span tags with a specific class.
+ * Only converts properly closed parentheses.
+ *
+ * @param text - The input text to process.
+ * @returns The processed text with span tags replacing parentheses content.
+ */
+export function convertParenthesesToSpans(text: string): string {
+	const regex = /\(([^()]+)\)/g
+
+	return text.replace(regex, (match, content) => {
+		return `<span class="text-gray-400">(${content})</span>`
+	})
+}
+
+/**
  * Divides a large text into paragraphs of approximately the specified length,
  * ensuring that splits occur at the next period after the target length.
  *

@@ -39,9 +39,7 @@ const pageTitle = "Foto del día"
 				</div>
 			</div>
 			<div class='md:col-span-3'>
-				<article
-					class='p-4 font-splineSans-regular font-normal bg-cold-500/30 rounded-3xl'
-				>
+				<article class='text-lg font-splineSans-regular font-normal'>
 					<section
 						id='apod-explanation'
 						lang='en'
@@ -74,7 +72,7 @@ const pageTitle = "Foto del día"
 
 	<script>
 		import { data } from "../../../scripts/fetch.js"
-		import { divideTextIntoParagraphs } from "../../../libs/textDivider"
+		import { processText } from "../../../libs/processText.js"
 
 		// animation
 		const img = document.querySelector("#apod-img")
@@ -98,9 +96,7 @@ const pageTitle = "Foto del día"
 		title.innerText = data.title
 		linkSeeHD?.setAttribute("href", data.hdurl)
 
-		const dividedParagraphs: string[] = divideTextIntoParagraphs(
-			data.explanation
-		)
+		const dividedParagraphs: string[] = processText(data.explanation)
 		const pTags: string[] = dividedParagraphs.map((para) => `<p>${para}</p>`)
 		const htmlContent: string = pTags.join("\n")
 		explanation.innerHTML = htmlContent
@@ -111,3 +107,10 @@ const pageTitle = "Foto del día"
 		date.innerText = dateString
 	</script>
 </BaseLayout>
+
+<style>
+	#apod-explanation p::first-letter {
+		font-family: "SplineSans-Bold";
+		font-weight: bold;
+	}
+</style>
