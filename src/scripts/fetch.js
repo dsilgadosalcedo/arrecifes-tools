@@ -53,7 +53,6 @@ async function getApodData() {
   } else {
     const newApodData = await fetchApodData();
     saveApodDataToCache(newApodData);
-    console.log(newApodData.rateLimitRemaining);
     return newApodData;
   }
 }
