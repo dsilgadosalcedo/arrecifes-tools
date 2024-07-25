@@ -8,15 +8,21 @@ const pageTitle = "dsilgadosalcedo"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h1
-		class='my-24 text-4xl sm:text-7xl text-center font-splineSans-bold font-bold'
-	>
-		<span>Desarrollador Frontend</span>
-		<br />
-		<span class='text-lg text-purple-300 font-splineSans-regular font-normal'
-		></span>
-	</h1>
 	<div class='flex flex-col gap-24'>
+		<section class='flex flex-col gap-4 pt-24'>
+			<h1
+				class='text-4xl sm:text-7xl text-center font-splineSans-bold font-bold'
+			>
+				Desarrollador Frontend
+			</h1>
+			<span
+				class='description text-center flex text-lg text-purple-200 font-splineSans-regular font-normal'
+			>
+				Desarrollador Frontend Líder con más de 2 años de experiencia dirigiendo
+				un equipo de 4 miembros. Experiencia en el ecosistema React, incluyendo
+				Next.js, TypeScript y Redux.
+			</span>
+		</section>
 		<CardsSection />
 		<NewFeature />
 		<Section sectionTitle='La foto del día'>
@@ -45,27 +51,6 @@ const pageTitle = "dsilgadosalcedo"
 		</Section>
 	</div>
 
-	<style>
-		@keyframes show {
-			from {
-				opacity: 0.7;
-				scale: 80%;
-			}
-			to {
-				opacity: 1;
-				scale: 100%;
-			}
-		}
-		#apod-img {
-			view-timeline-name: --revealing-image;
-			animation-name: show;
-			animation-fill-mode: both;
-
-			animation-timeline: --revealing-image;
-			animation-range: entry 5% cover 50%;
-		}
-	</style>
-
 	<script>
 		import { data } from "../scripts/fetch.js"
 
@@ -78,3 +63,29 @@ const pageTitle = "dsilgadosalcedo"
 		title.innerText = data.title
 	</script>
 </BaseLayout>
+
+<style>
+	#apod-img {
+		view-timeline-name: --revealing-image;
+		animation-name: show;
+		animation-fill-mode: both;
+
+		animation-timeline: --revealing-image;
+		animation-range: entry 5% cover 50%;
+	}
+
+	.description {
+		text-wrap: balance;
+	}
+
+	@keyframes show {
+		from {
+			opacity: 0.7;
+			scale: 80%;
+		}
+		to {
+			opacity: 1;
+			scale: 100%;
+		}
+	}
+</style>
