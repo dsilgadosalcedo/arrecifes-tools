@@ -1,56 +1,53 @@
 ---
 import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+// import Footer from "../components/Footer.astro"
 
 interface Props {
-  pageTitle: string
-  subPage?: string
+	pageTitle: string
+	subPage?: string
 }
-const {pageTitle, subPage} = Astro.props as Props
+const { pageTitle, subPage } = Astro.props as Props
 ---
+
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/icons/logo.svg" type="image/x-icon">
-  <title>{pageTitle}</title>
-</head>
-<body class="
-  text-white
-  m-0 p-0 
-  bg-cold-800
-">
-  <div class="flex flex-col min-h-screen">
-    <Header {subPage} />
-    <main class="flex-grow">
-      <slot />
-    </main>
-    <Footer />
-  </div>
-</body>
+<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<link rel='shortcut icon' href='/icons/logo.svg' type='image/x-icon' />
+		<title>{pageTitle}</title>
+	</head>
+	<body class='text-white m-0 p-0 bg-cold-800'>
+		<div class='flex flex-col min-h-screen'>
+			<Header {subPage} />
+			<main class='flex-grow'>
+				<slot />
+			</main>
+			<!-- <Footer /> -->
+		</div>
+	</body>
 </html>
 
 <style is:global>
-  * {
-    box-sizing: border-box;
-  }
+	* {
+		box-sizing: border-box;
+	}
 
-  @font—face {
-    font—family: 'SplineSans-Bold';
-    src: url('/fonts/SplineSans-Bold.ttf');
-    font—weight: bold;
-  }
-  
-  @font-face {
-    font-family: 'MonoDisplay-normal';
-    src: url('/fonts/MajorMonoDisplay-Regular.ttf');
-    font—weight: normal;
-  }
+	@font—face {
+		font—family: "SplineSans-Bold";
+		src: url("/fonts/SplineSans-Bold.ttf");
+		font—weight: bold;
+	}
 
-  @font-face {
-    font-family: 'SplineSans-Regular';
-    src: url('/fonts/SplineSans-Regular.ttf');
-    font-weight: 400;
-  }
+	@font-face {
+		font-family: "MonoDisplay-normal";
+		src: url("/fonts/MajorMonoDisplay-Regular.ttf");
+		font—weight: normal;
+	}
+
+	@font-face {
+		font-family: "SplineSans-Regular";
+		src: url("/fonts/SplineSans-Regular.ttf");
+		font-weight: 400;
+	}
 </style>
