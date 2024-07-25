@@ -1,48 +1,54 @@
 ---
-const {subPage} = Astro.props
+const { subPage } = Astro.props
 const menu = [
-  {name: "Tienda", href:"tienda"},
-  {name: "Cursos", href:"cursos"},
-  {name: "Inicia sesión", href:"iniciarsesion"},
-  ]
+	{ name: "Tienda", href: "tienda" },
+	{ name: "Cursos", href: "cursos" },
+	{ name: "Inicia sesión", href: "iniciarsesion" },
+]
 ---
-<header class="
-  px-4 sm:px-8 md:px-16 lg:px-32 
-  w-full h-20 z-40
-  flex items-center justify-between 
-  backdrop-blur-md
-  rounded-b-2xl
-  sticky top-0
-">
-  <div class="flex gap-4 items-center">
-    <a href="/">
-      <img src="/icons/logo.svg" alt="Logo de Arrecife"
-      class="w-[50px] h-[50px]">
-    </a>
-    {
-      subPage && <a href={`/${subPage.toLocaleLowerCase()}`} class="hidden sm:inline-block text-2xl font-splineSans-bold">{subPage}</a>
-    }
-  </div>
-  <a href="#" class="
-    sm:hidden
-    h-[50px] w-[50px] 
-    bg-indigo-950 rounded-xl
-    flex items-center justify-center
-    ">
-    <img src="/icons/menu.svg" alt="Menu" class="h-[30px] w-[30px]">
-  </a>
-  <nav class="hidden sm:block">
-    <ul class="flex gap-4">
-      {
-        menu.map((item) =>
-          <li>
-            <a 
-              href={item.href}
-              class="border-[3px] border-cold-400 py-2 px-4 rounded-3xl hover:rounded-2xl hover:bg-cold-700/80  ease-in-out duration-150 transition-all font-splineSans-bold font-bold"
-            >{item.name}</a>              
-          </li>
-        )
-      }
-    </ul>
-  </nav>
+
+<header
+	class='px-4 sm:px-8 md:px-16 lg:px-32 md:mt-4 w-full h-20 z-40 flex items-center justify-between backdrop-blur-md rounded-b-2xl sticky top-0'
+>
+	<div class='flex gap-4 items-center'>
+		<a href='/'>
+			<img
+				src='/icons/logo.svg'
+				alt='Logo de Arrecife'
+				class='w-[50px] h-[50px]'
+			/>
+		</a>
+		{
+			subPage && (
+				<a
+					href={`/${subPage.toLocaleLowerCase()}`}
+					class='hidden sm:inline-block text-2xl font-splineSans-bold'
+				>
+					{subPage}
+				</a>
+			)
+		}
+	</div>
+	<a
+		href='#'
+		class='sm:hidden h-[50px] w-[50px] bg-indigo-950 rounded-xl flex items-center justify-center'
+	>
+		<img src='/icons/menu.svg' alt='Menu' class='h-[30px] w-[30px]' />
+	</a>
+	<nav class='hidden sm:block'>
+		<ul class='flex gap-4'>
+			{
+				menu.map((item) => (
+					<li>
+						<a
+							href={item.href}
+							class='border-[3px] border-cold-400 py-2 px-4 rounded-3xl hover:rounded-2xl hover:bg-cold-700/80  ease-in-out duration-150 transition-all font-splineSans-bold font-bold'
+						>
+							{item.name}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
 </header>
