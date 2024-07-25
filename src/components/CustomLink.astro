@@ -1,0 +1,17 @@
+---
+interface Props {
+	href: string
+	id?: string
+	class?: string
+	[key: string]: any
+}
+
+const { href, id, class: className, ...props } = Astro.props
+
+const baseClasses =
+	"text-gray-300 text-sm p-2 rounded-lg font-splineSans-regular font-normal bg-cold-700 hover:bg-cold-500 transition-all duration-200 ease-in-out"
+---
+
+<a {...props} id={id} href={href} class:list={[baseClasses, className]}>
+	<slot />
+</a>

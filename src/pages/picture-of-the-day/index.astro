@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
-import Link from "../../components/Link.astro"
+import CustomLink from "../../components/CustomLink.astro"
 import Section from "../../components/Section.astro"
 
 const pageTitle = "Foto del día"
@@ -34,7 +34,9 @@ const pageTitle = "Foto del día"
 						class='w-100 h-96 rounded-3xl object-cover hover:cursor-pointer'
 					/>
 					<div class='m-4 flex flex-wrap gap-2'>
-						<Link id='link-see-hd'>Ver en HD</Link>
+						<CustomLink id='link-see-hd' href='' target='_blank'>
+							Ver en HD
+						</CustomLink>
 					</div>
 				</div>
 			</div>
