@@ -8,13 +8,13 @@ const myCards = cards
 
 <Section
 	id='card-section'
-	sectionTitle='Proyectos'
+	sectionTitle='Experiencia'
 	fullWidth='true'
 	classes='sm:px-8 md:px-16 lg:px-32'
 >
 	<div
 		id='cards-container'
-		class='grid gap-4 pl-4 sm:pl-0 grid-flow-col overflow-x-scroll sm:grid-cols-2 md:grid-cols-3 sm:grid-flow-row sm:overflow-visible sm:pb-2'
+		class='grid gap-3 pl-4 sm:pl-0 grid-flow-col overflow-x-scroll sm:grid-cols-2 md:grid-cols-3 sm:grid-flow-row sm:overflow-visible sm:pb-2'
 	>
 		{
 			myCards.map((card) => (
@@ -23,6 +23,7 @@ const myCards = cards
 					description={card.description}
 					url={card.url}
 					image={card.image}
+					icon={card.icon}
 					fromColor={card.fromColor}
 					toColor={card.toColor}
 				/>

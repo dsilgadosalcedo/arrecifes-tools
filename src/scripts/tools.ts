@@ -1,22 +1,32 @@
 // gradient
-type FromColor = `from-${string}`
-type ToColor = `to-${string}`
+export type FromColor = `from-${string}`
+export type ToColor = `to-${string}`
 
-interface Card {
-	title: string
+export interface ExperienceCard {
 	description: string
-	url?: string
-	image: string
 	fromColor: FromColor
+	icon: string
+	image?: string
+	title: string
 	toColor: ToColor
+	url?: string
 }
 
-export const cards: Card[] = [
+export const cards: ExperienceCard[] = [
 	{
-		title: "Space",
-		description: "Nuestras herramientas celestiales.",
-		image: "/icons/resources-icon.svg",
+		description: "Una aplicación que optimiza el proceso de prospección.",
+		fromColor: "from-white",
+		icon: "/icons/work.svg",
+		image: "/img/growth-service.png",
+		title: "Growth Service",
+		toColor: "to-cold-400",
+		url: "https://app.dev.growthservice.co/",
+	},
+	{
+		description: "Un editor de código para la web y para ti.",
 		fromColor: "from-cold-100",
+		icon: "/icons/codecraft.svg",
+		title: "Codecraft",
 		toColor: "to-cold-800",
 	},
 	// {
@@ -27,19 +37,13 @@ export const cards: Card[] = [
 	// 	toColor: "to-gray-800",
 	// },
 	{
-		title: "Ecosistemas",
-		description: "Tejidos vivos interconectados en equilibrio.",
-		url: "/ecosystems",
-		image: "/icons/ecosystems-icon.svg",
+		description:
+			"Encuentra cualquier especie, avistamientos, habitat y más info.",
 		fromColor: "from-[#42cc80]",
+		icon: "/icons/ecosystems-icon.svg",
+		title: "BB2",
 		toColor: "to-cold-400",
-	},
-	{
-		title: "Clima",
-		description: "Entre el equilibrio y el caos.",
-		image: "/icons/climate-icon.svg",
-		fromColor: "from-white",
-		toColor: "to-cold-400",
+		url: "/ecosystems",
 	},
 	// {
 	// 	title: "Residuos",
