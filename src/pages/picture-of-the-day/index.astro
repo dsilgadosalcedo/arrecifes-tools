@@ -31,7 +31,7 @@ const pageTitle = "Foto del día"
 						id='apod-img'
 						src=''
 						alt='Tú eres la foto del día'
-						class='w-100 h-96 rounded-3xl object-cover hover:cursor-pointer'
+						class='w-full h-full rounded-3xl object-cover hover:cursor-pointer'
 					/>
 					<div class='m-4 flex flex-wrap gap-2'>
 						<CustomLink id='link-see-hd' href='' target='_blank'>
@@ -104,7 +104,7 @@ const pageTitle = "Foto del día"
 		explanation.innerHTML = htmlContent
 
 		let dateString = data.copyright
-			? `${data.date} - ${data.copyright}`
+			? `${data.copyright}`
 			: data.date
 		date.innerText = dateString
 	</script>

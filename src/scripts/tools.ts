@@ -29,13 +29,6 @@ export const cards: ExperienceCard[] = [
 		title: "Codecraft",
 		toColor: "to-cold-800",
 	},
-	// {
-	// 	title: "Tratamientos",
-	// 	description: "Las Tools para el tratamiento de suelos y agua.",
-	// 	image: "/icons/pollution-icon.svg",
-	// 	fromColor: "from-white",
-	// 	toColor: "to-gray-800",
-	// },
 	{
 		description:
 			"Encuentra cualquier especie, avistamientos, habitat y más info.",
@@ -45,6 +38,13 @@ export const cards: ExperienceCard[] = [
 		toColor: "to-cold-400",
 		url: "/ecosystems",
 	},
+	// {
+	// 	title: "Tratamientos",
+	// 	description: "Las Tools para el tratamiento de suelos y agua.",
+	// 	image: "/icons/pollution-icon.svg",
+	// 	fromColor: "from-white",
+	// 	toColor: "to-gray-800",
+	// },
 	// {
 	// 	title: "Residuos",
 	// 	description: "Manejo integral de residuos aquí.",
