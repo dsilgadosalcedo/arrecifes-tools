@@ -19,13 +19,14 @@ const myCards = cards
 		{
 			myCards.map((card) => (
 				<Card
-					title={card.title}
 					description={card.description}
-					url={card.url}
-					image={card.image}
-					icon={card.icon}
 					fromColor={card.fromColor}
+					icon={card.icon}
+					image={card.image}
+					tag={card.tag}
+					title={card.title}
 					toColor={card.toColor}
+					url={card.url}
 				/>
 			))
 		}

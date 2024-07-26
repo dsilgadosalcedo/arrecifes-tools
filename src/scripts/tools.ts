@@ -7,6 +7,7 @@ export interface ExperienceCard {
 	fromColor: FromColor
 	icon: string
 	image?: string
+	tag: string
 	title: string
 	toColor: ToColor
 	url?: string
@@ -18,6 +19,7 @@ export const cards: ExperienceCard[] = [
 		fromColor: "from-white",
 		icon: "/icons/work.svg",
 		image: "/img/growth-service.png",
+		tag: "Trabajo",
 		title: "Growth Service",
 		toColor: "to-cold-400",
 		url: "https://app.dev.growthservice.co/",
@@ -26,6 +28,7 @@ export const cards: ExperienceCard[] = [
 		description: "Un editor de código para la web y para ti.",
 		fromColor: "from-cold-100",
 		icon: "/icons/codecraft.svg",
+		tag: "Proyecto",
 		title: "Codecraft",
 		toColor: "to-cold-800",
 	},
@@ -35,8 +38,9 @@ export const cards: ExperienceCard[] = [
 		fromColor: "from-[#42cc80]",
 		icon: "/icons/ecosystems-icon.svg",
 		title: "BB2",
+		tag: "Proyecto",
 		toColor: "to-cold-400",
-		url: "/ecosystems",
+		url: "https://bb2-project.vercel.app/",
 	},
 	// {
 	// 	title: "Tratamientos",
