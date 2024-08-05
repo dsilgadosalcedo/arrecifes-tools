@@ -2,7 +2,7 @@
 export type FromColor = `from-${string}`
 export type ToColor = `to-${string}`
 
-export interface ExperienceCard {
+export interface ProjectCard {
 	description: string
 	fromColor: FromColor
 	icon: string
@@ -13,7 +13,7 @@ export interface ExperienceCard {
 	url?: string
 }
 
-export const cards: ExperienceCard[] = [
+export const cards: ProjectCard[] = [
 	{
 		description: "Una aplicación que optimiza el proceso de prospección.",
 		fromColor: "from-white",
@@ -31,6 +31,7 @@ export const cards: ExperienceCard[] = [
 		tag: "Proyecto",
 		title: "Codecraft",
 		toColor: "to-cold-800",
+		url: "https://mycodecraft.vercel.app/",
 	},
 	{
 		description:

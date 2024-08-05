@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import { ExperienceCard, FromColor, ToColor } from "../scripts/tools"
+import type { ProjectCard } from "../scripts/projects" 
 
 const {
   description,
@@ -11,7 +11,7 @@ const {
   title,
   toColor,
   url = '#',
-} = Astro.props as ExperienceCard
+} = Astro.props as ProjectCard
 ---
 
 <a 
