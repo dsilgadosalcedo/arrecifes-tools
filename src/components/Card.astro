@@ -19,8 +19,8 @@ const {
   class=`
     card
     bg-gradient-to-bl ${fromColor} ${toColor}
-    rounded-[42px]
-    w-64 sm:w-full h-[500px] sm:h-80 p-8 sm:py-3 sm:p-0
+    rounded-3xl md:rounded-[42px]
+    w-64 sm:w-full h-[440px] sm:h-80 p-8 sm:py-3 sm:p-0
     flex flex-col items-center
     cursor-pointer
     sm:opacity-90 sm:hover:opacity-100
@@ -43,7 +43,7 @@ const {
   <div class="flex flex-grow flex-col justify-center items-center text-center z-index-20">
     <h3 class="text-2xl font-splineSans-bold text-white">{title}</h3>
     <div class="rounded-3xl self-center">
-      <p class="text-lg w-72 px-4">{description}</p>
+      <p class="md:text-lg w-72 px-8 md:px-4">{description}</p>
     </div>
   </div>
 </a>
