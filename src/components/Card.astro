@@ -19,8 +19,8 @@ const {
   class=`
     card
     bg-gradient-to-bl ${fromColor} ${toColor}
-    rounded-3xl md:rounded-[42px]
-    w-64 sm:w-full h-[440px] sm:h-80 p-8 sm:py-3 sm:p-0
+    rounded-3xl md:rounded-[30px]
+    w-64 sm:w-full h-[440px] sm:h-80 p-8 sm:py-4 sm:p-0
     flex flex-col items-center
     cursor-pointer
     sm:opacity-90 sm:hover:opacity-100
@@ -36,9 +36,13 @@ const {
       <Image src={image} alt={`${title} logo`} width={500} height={500} class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 hover:opacity-20 transition-opacity duration-200 z-index-10' />
     )
   } -->
-  <div class="absolute top-4 left-4 z-index-30 bg-cold-200 text-gray-200 px-2 py-1 rounded-full text-sm">
-    <span>{tag}</span>
-  </div>
+  {
+    tag && (
+      <div class="absolute top-4 left-4 z-index-30 bg-cold-200 text-gray-200 px-2 py-1 rounded-full text-sm">
+        <span>{tag}</span>
+      </div>
+    )
+  }
   <Image src={icon} alt=`${title} logo` width={140} height={140} class='z-index-20' />
   <div class="flex flex-grow flex-col justify-center items-center text-center z-index-20">
     <h3 class="text-2xl font-splineSans-bold text-white">{title}</h3>

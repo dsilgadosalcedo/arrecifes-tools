@@ -7,7 +7,7 @@ export interface ProjectCard {
 	fromColor: FromColor
 	icon: string
 	image?: string
-	tag: string
+	tag?: string
 	title: string
 	toColor: ToColor
 	url?: string
@@ -15,20 +15,9 @@ export interface ProjectCard {
 
 export const cards: ProjectCard[] = [
 	{
-		description: "Una aplicación que optimiza el proceso de prospección.",
-		fromColor: "from-white",
-		icon: "/icons/work.svg",
-		image: "/img/growth-service.png",
-		tag: "Trabajo",
-		title: "Growth Service",
-		toColor: "to-cold-400",
-		url: "https://app.dev.growthservice.co/",
-	},
-	{
 		description: "Un editor de código para la web y para ti.",
 		fromColor: "from-cold-100",
 		icon: "/icons/codecraft.svg",
-		tag: "Proyecto",
 		title: "Codecraft",
 		toColor: "to-cold-800",
 		url: "https://mycodecraft.vercel.app/",
@@ -39,7 +28,6 @@ export const cards: ProjectCard[] = [
 		fromColor: "from-[#42cc80]",
 		icon: "/icons/ecosystems-icon.svg",
 		title: "BB2",
-		tag: "Proyecto",
 		toColor: "to-cold-400",
 		url: "https://bb2-project.vercel.app/",
 	},
